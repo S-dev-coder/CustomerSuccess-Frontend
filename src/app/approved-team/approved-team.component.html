@@ -1,0 +1,139 @@
+<mat-drawer-container class="example-container">
+  <mat-drawer class="drawer" mode="side" opened>
+    <div class="drawer-content">
+      <!-- Buttons added below drawer content text -->
+      <button mat-raised-button color="primary" class="btn" (click)="navigateToHome()">
+
+        <mat-icon>add</mat-icon> New Project
+
+      </button>
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateTo()">
+        <mat-icon>group</mat-icon> Approved Team
+      </button>
+
+      <button mat-raised-button color="secondary" class="btn">
+        <mat-icon>folder</mat-icon> Resources
+      </button>
+
+      <button mat-raised-button color="secondary" class="btn">
+        <mat-icon>feedback</mat-icon> Client Feedback
+      </button>
+
+      <button mat-raised-button color="secondary" class="btn">
+        <mat-icon>update</mat-icon> Project Updates
+      </button>
+
+      <button mat-raised-button color="secondary" class="btn">
+        <mat-icon>event_note</mat-icon> MoM
+
+      </button>
+
+
+
+      <!-- End of buttons -->
+    </div>
+  </mat-drawer>
+  <mat-drawer-content class="main">Main content
+    <div>
+
+      <mat-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Number of Resource </ng-template>
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Role">
+          <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+              <mat-label>Role</mat-label>
+              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Availability">
+          <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+              <mat-label>Availability</mat-label>
+              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Duration">
+          <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+              <mat-label>Duration</mat-label>
+              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Duration</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </div>
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Project Detail </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th mat-header-cell *matHeaderCellDef>Client </th>
+          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th mat-header-cell *matHeaderCellDef> Project Manager </th>
+          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+
+    </div>
+
+  </mat-drawer-content>
+
+
+
+</mat-drawer-container>
