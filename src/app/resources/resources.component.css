@@ -1,0 +1,38 @@
+.content-container{
+    height: 100%;
+    border: 1px solid #080808;
+    min-height: 100vh;
+  }
+  .sidebar{
+    background-color: #f1eded;
+    height:100%;
+    width:300px;
+  }
+  
+  .drawer-content {
+    display: flex;
+    padding-top: 50px;
+    flex-direction: column;
+    /* height: 100%; */
+  }
+  .main-content {
+    width:180vh;
+    padding: 30px; /* Example padding */
+  } 
+  
+  .btn{
+    margin: 20px;
+    padding: 15px;
+    width: 200px;
+  }
+  .mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  
+  table {
+    width: 100%;
+  }

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
@@ -7,20 +7,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ApprovedTeamService } from '../services/approved-team.service';
 import { NgForm } from '@angular/forms';
 import {PeriodicElement} from '../Model/team';
-
-
-
-
+import { FeedbackService } from '../services/feedback.service';
 
 @Component({
-  selector: 'app-approved-team',
-  templateUrl: './approved-team.component.html',
-  styleUrl: './approved-team.component.css'
+  selector: 'app-clientfeedback',
+  templateUrl: './clientfeedback.component.html',
+  styleUrl: './clientfeedback.component.css'
 })
 
+export class ClientfeedbackComponent {
 
-export class ApprovedTeamComponent {
- teamList: any;
+  feedbackList: any;
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -30,22 +27,22 @@ export class ApprovedTeamComponent {
   isLinear = false;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _approvedteamService: ApprovedTeamService, private nav: ApprovedTeamService) {
-    this.getTeamList();
+  constructor(private _formBuilder: FormBuilder, private router: Router, private _feedbackService: FeedbackService, private nav: FeedbackService) {
+    this.getFeedbackList();
   }
-  displayedColumns: string[] = ['numberofresources', 'role', 'availability','duration' , "action"];
+  displayedColumns: string[] = ['feedbacktype', 'datereceived', 'detailedfeedabck','actiontaken','closuredate' , "action"];
 
-  getTeamList() {
-    this._approvedteamService.getTeamList().subscribe((res: any) => {
+  getFeedbackList() {
+    this._feedbackService.getFeedbackList().subscribe((res: any) => {
       console.log(res.items);
-      this.teamList = res.items;
+      this.feedbackList = res.items;
     });
   }
 
-  deleteTeam(id: string) {
-    this._approvedteamService.deleteTeam(id).subscribe((res: any) => {
+  deleteFeedback(id: string) {
+    this._feedbackService.deleteFeedback(id).subscribe((res: any) => {
       console.log(res);
-      this.getTeamList();
+      this.getFeedbackList();
     });
   }
   
@@ -74,7 +71,3 @@ export class ApprovedTeamComponent {
     this.router.navigate(['/dashboard']);
   }
 }
-
-  
-
-

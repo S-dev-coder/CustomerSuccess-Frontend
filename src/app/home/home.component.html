@@ -7,19 +7,29 @@
         <mat-icon>add</mat-icon> New Project
 
       </button>
-      <button mat-raised-button color="secondary" class="btn" (click)="navigateTo()">
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateTodashboard()">
+
+        <mat-icon>home</mat-icon> Dashboard
+  
+      </button>
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateToProjects()">
+  
+        <mat-icon>work</mat-icon> Projects
+  
+      </button>
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateToteam()">
         <mat-icon>group</mat-icon> Approved Team
       </button>
 
-      <button mat-raised-button color="secondary" class="btn">
+      <button mat-raised-button color="secondary" class="btn"(click)="navigateToresource()">
         <mat-icon>folder</mat-icon> Resources
       </button>
 
-      <button mat-raised-button color="secondary" class="btn">
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateToclientfeedback()">
         <mat-icon>feedback</mat-icon> Client Feedback
       </button>
 
-      <button mat-raised-button color="secondary" class="btn">
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateToprojectUpdate()">
         <mat-icon>update</mat-icon> Project Updates
       </button>
 

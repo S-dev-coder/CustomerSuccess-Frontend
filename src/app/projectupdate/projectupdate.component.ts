@@ -9,17 +9,16 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ProjectService } from '../services/project.service';
-
-
-
+import { ProjectUpdateService } from '../services/project-update.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  selector: 'app-projectupdate',
+  templateUrl: './projectupdate.component.html',
+  styleUrl: './projectupdate.component.css'
 })
-export class HomeComponent {
-  projectList: any;
+
+export class ProjectupdateComponent {
+ updateList: any;
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -29,22 +28,22 @@ export class HomeComponent {
   isLinear = false;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _projectService: ProjectService, private nav: ProjectService) {
-    this.getProjectList();
+  constructor(private _formBuilder: FormBuilder, private router: Router, private _projectupdateService: ProjectUpdateService, private nav: ProjectUpdateService) {
+    this.getUpdateList();
   }
-  displayedColumns: string[] = ['name', 'discription', 'project-manager', "action"];
+  displayedColumns: string[] = ['date', 'generalupdates', "action"];
 
-  getProjectList() {
-    this._projectService.getProjectList().subscribe((res: any) => {
+  getUpdateList() {
+    this._projectupdateService.getUpdateList().subscribe((res: any) => {
       console.log(res.items);
-      this.projectList = res.items;
+      this.updateList = res.items;
     });
   }
 
-  deleteProject(id: string) {
-    this._projectService.deleteProject(id).subscribe((res: any) => {
+  deleteUpdate(id: string) {
+    this._projectupdateService.deleteUpdate(id).subscribe((res: any) => {
       console.log(res);
-      this.getProjectList();
+      this.getUpdateList();
     });
   }
   
@@ -62,6 +61,10 @@ export class HomeComponent {
   }
   navigateToprojectUpdate(){
     this.router.navigate(['/projectupdate']);
+  }
+
+  navigateToMoM(){
+    this.router.navigate(['/meetingminutes']);
   }
   navigateToProjects(){
     this.router.navigate(['/projects']);

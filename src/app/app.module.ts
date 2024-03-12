@@ -13,13 +13,24 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { ApprovedTeamComponent } from './approved-team/approved-team.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ResourcesComponent } from './resources/resources.component';
+import { ClientfeedbackComponent } from './clientfeedback/clientfeedback.component';
+import { ProjectupdateComponent } from './projectupdate/projectupdate.component';
+import { MomComponent } from './mom/mom.component';
+import { ProjectsComponent } from './projects/projects.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +38,12 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     SidenavComponent,
     ApprovedTeamComponent,
+    ResourcesComponent,
+    ClientfeedbackComponent,
+    ProjectupdateComponent,
+    MomComponent,
+    ProjectsComponent,
+    DashboardComponent,
    
 
   ],
@@ -46,7 +63,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatSelectModule,
     HttpClientModule,
     MatSidenavModule,
-
+    MatTabsModule,
+    MatCardModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },

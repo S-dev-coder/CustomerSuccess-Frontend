@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
@@ -7,20 +7,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ApprovedTeamService } from '../services/approved-team.service';
 import { NgForm } from '@angular/forms';
 import {PeriodicElement} from '../Model/team';
-
-
-
-
+import { MatTableModule } from '@angular/material/table';
+import { MoMService } from '../services/mom.service';
 
 @Component({
-  selector: 'app-approved-team',
-  templateUrl: './approved-team.component.html',
-  styleUrl: './approved-team.component.css'
+  selector: 'app-mom',
+  templateUrl: './mom.component.html',
+  styleUrl: './mom.component.css'
 })
+export class MomComponent {
 
-
-export class ApprovedTeamComponent {
- teamList: any;
+  momList: any;
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -30,22 +27,22 @@ export class ApprovedTeamComponent {
   isLinear = false;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _approvedteamService: ApprovedTeamService, private nav: ApprovedTeamService) {
-    this.getTeamList();
+  constructor(private _formBuilder: FormBuilder, private router: Router, private _momService: MoMService, private nav: MoMService) {
+    this.getMoMList();
   }
-  displayedColumns: string[] = ['numberofresources', 'role', 'availability','duration' , "action"];
+  displayedColumns: string[] = ['date', 'duration', 'MoMLink','comments' , "action"];
 
-  getTeamList() {
-    this._approvedteamService.getTeamList().subscribe((res: any) => {
+  getMoMList() {
+    this._momService.getMoMList().subscribe((res: any) => {
       console.log(res.items);
-      this.teamList = res.items;
+      this.momList = res.items;
     });
   }
 
   deleteTeam(id: string) {
-    this._approvedteamService.deleteTeam(id).subscribe((res: any) => {
+    this._momService.deleteMoM(id).subscribe((res: any) => {
       console.log(res);
-      this.getTeamList();
+      this.getMoMList();
     });
   }
   
@@ -74,7 +71,3 @@ export class ApprovedTeamComponent {
     this.router.navigate(['/dashboard']);
   }
 }
-
-  
-
-

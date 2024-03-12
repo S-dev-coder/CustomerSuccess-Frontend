@@ -1,0 +1,69 @@
+.content-container{
+    height: 100%;
+    border: 1px solid #080808;
+    min-height: 100vh;
+  }
+  .sidebar{
+    background-color: #f1eded;
+    height:100%;
+    width:300px;
+  }
+  
+  .drawer-content {
+    display: flex;
+    padding-top: 50px;
+    flex-direction: column;
+    /* height: 100%; */
+  }
+  .main-content {
+    width:180vh;
+    padding: 30px; /* Example padding */
+  } 
+  
+  .btn{
+    margin: 20px;
+    padding: 15px;
+    width: 200px;
+  }
+  
+
+  
+  .top-div {
+    background-color: #f0f0f0; /* Background color */
+    padding: 50px; /* Add padding */
+    border-bottom: 2px solid #ccc; /* Add border to the bottom */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+}
+
+.bottom-div {
+    padding-top: 60px; /* Add padding */
+}
+
+/* Style the mat-tab-group */
+.mat-tab-group {
+    background-color: #fff; /* Background color */
+    border: 10px solid #ccc; /* Add border */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    margin-top: 50px; /* Add margin to separate from the top div */
+}
+
+/* Style the mat-tab labels */
+.mat-tab-label {
+    font-weight: bold; /* Make the label text bold */
+    color: #333; /* Text color */
+}
+
+/* Style the mat-tab content */
+.mat-tab-body-content {
+    padding: 20px; /* Add padding */
+}
+
+.example-form {
+  
+    padding-top: 40px;
+  }
+  
+  .example-full-width {
+    width: 60%;
+    height:200%;
+  }
