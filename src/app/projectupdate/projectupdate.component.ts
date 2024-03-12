@@ -18,7 +18,7 @@ import { ProjectUpdateService } from '../services/project-update.service';
 })
 
 export class ProjectupdateComponent {
- updateList: any;
+  updateList: any;
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -31,7 +31,7 @@ export class ProjectupdateComponent {
   constructor(private _formBuilder: FormBuilder, private router: Router, private _projectupdateService: ProjectUpdateService, private nav: ProjectUpdateService) {
     this.getUpdateList();
   }
-  displayedColumns: string[] = ['date', 'generalupdates', "action"];
+  displayedColumns: string[] = ['date', 'generalUpdates', "action"];
 
   getUpdateList() {
     this._projectupdateService.getUpdateList().subscribe((res: any) => {
@@ -46,30 +46,30 @@ export class ProjectupdateComponent {
       this.getUpdateList();
     });
   }
-  
+
   navigateToteam() {
     this.router.navigate(['/approved-team']);
   }
   navigateToHome() {
     this.router.navigate(['/']);
   }
-  navigateToresource(){
+  navigateToresource() {
     this.router.navigate(['/resources']);
   }
-  navigateToclientfeedback(){
+  navigateToclientfeedback() {
     this.router.navigate(['/clientfeedback']);
   }
-  navigateToprojectUpdate(){
+  navigateToprojectUpdate() {
     this.router.navigate(['/projectupdate']);
   }
 
-  navigateToMoM(){
+  navigateToMoM() {
     this.router.navigate(['/meetingminutes']);
   }
-  navigateToProjects(){
+  navigateToProjects() {
     this.router.navigate(['/projects']);
   }
-  navigateTodashboard(){
+  navigateTodashboard() {
     this.router.navigate(['/dashboard']);
   }
 }

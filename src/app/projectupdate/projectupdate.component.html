@@ -10,13 +10,13 @@
             <button mat-raised-button color="secondary" class="btn" (click)="navigateTodashboard()">
 
                 <mat-icon>home</mat-icon> Dashboard
-          
-              </button>
-              <button mat-raised-button color="secondary" class="btn" (click)="navigateToProjects()">
-          
+
+            </button>
+            <button mat-raised-button color="secondary" class="btn" (click)="navigateToProjects()">
+
                 <mat-icon>work</mat-icon> Projects
-          
-              </button>
+
+            </button>
             <button mat-raised-button color="secondary" class="btn" (click)="navigateToteam()">
                 <mat-icon>group</mat-icon> Approved Team
             </button>
@@ -104,9 +104,9 @@
                 </ng-container>
 
                 <!-- Weight Column -->
-                <ng-container matColumnDef="generalupdate">
+                <ng-container matColumnDef="generalUpdates">
                     <th mat-header-cell *matHeaderCellDef>General Updates/th>
-                    <td mat-cell *matCellDef="let element"> {{element.GeneralUpdates}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.generalUpdates}} </td>
                 </ng-container>
 
 

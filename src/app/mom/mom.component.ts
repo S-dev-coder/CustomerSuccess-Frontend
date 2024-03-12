@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ApprovedTeamService } from '../services/approved-team.service';
 import { NgForm } from '@angular/forms';
-import {PeriodicElement} from '../Model/team';
+import { PeriodicElement } from '../Model/team';
 import { MatTableModule } from '@angular/material/table';
 import { MoMService } from '../services/mom.service';
 
@@ -30,44 +30,44 @@ export class MomComponent {
   constructor(private _formBuilder: FormBuilder, private router: Router, private _momService: MoMService, private nav: MoMService) {
     this.getMoMList();
   }
-  displayedColumns: string[] = ['date', 'duration', 'MoMLink','comments' , "action"];
+  displayedColumns: string[] = ["meetingDate", "duration", 'moMLink', 'comments', "action"];
 
   getMoMList() {
     this._momService.getMoMList().subscribe((res: any) => {
-      console.log(res.items);
+      console.log(res);
       this.momList = res.items;
     });
   }
 
-  deleteTeam(id: string) {
+  deleteMoM(id: string) {
     this._momService.deleteMoM(id).subscribe((res: any) => {
       console.log(res);
       this.getMoMList();
     });
   }
-  
+
   navigateToteam() {
     this.router.navigate(['/approved-team']);
   }
   navigateToHome() {
     this.router.navigate(['/']);
   }
-  navigateToresource(){
+  navigateToresource() {
     this.router.navigate(['/resources']);
   }
-  navigateToclientfeedback(){
+  navigateToclientfeedback() {
     this.router.navigate(['/clientfeedback']);
   }
-  navigateToprojectUpdate(){
+  navigateToprojectUpdate() {
     this.router.navigate(['/projectupdate']);
   }
-  navigateToMoM(){
+  navigateToMoM() {
     this.router.navigate(['/meetingminutes']);
   }
-  navigateToProjects(){
+  navigateToProjects() {
     this.router.navigate(['/projects']);
   }
-  navigateTodashboard(){
+  navigateTodashboard() {
     this.router.navigate(['/dashboard']);
   }
 }
