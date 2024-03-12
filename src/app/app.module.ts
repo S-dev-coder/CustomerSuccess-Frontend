@@ -8,14 +8,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {MatIconModule} from '@angular/material/icon';
-import {FormBuilder, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatTableModule} from '@angular/material/table';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatTableModule } from '@angular/material/table';
 import { ApprovedTeamComponent } from './approved-team/approved-team.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     SidenavComponent,
     ApprovedTeamComponent,
- 
+   
+
   ],
   imports: [
     BrowserModule,
@@ -43,8 +44,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatDatepickerModule,
     MatSelectModule,
-    HttpClientModule
-   
+    HttpClientModule,
+    MatSidenavModule,
+
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
@@ -64,5 +66,5 @@ export class AppModule {
   });
   isLinear = false;
 
-  constructor(private _formBuilder: FormBuilder) {}
- }
+  constructor(private _formBuilder: FormBuilder) { }
+}

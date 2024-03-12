@@ -1,17 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApprovedTeamService {
-  private apiUrl = 'https://localhost:44347/api/app/client-feedback';
+ 
+  constructor(private http: HttpService) { }
 
-  constructor(private http: HttpClient) { }
+  getTeamList() {
+      return this.http.get('api/app/approved-team');
+  }
 
-  submitData(formData: any): Observable<any> {
-    // Assuming your backend API expects POST request with form data
-    return this.http.post<any>(`${this.apiUrl}/submit-data`, formData);
+  getTeamById(id: string) {
+      const apiUrl = `api/app/approved-team/${id}`;
+      return this.http.get(apiUrl);
+  }
+
+  createTeam(data: any) {
+      return this.http.post('api/app/approved-team', data);
+  }
+
+  updateTeam(id: string, data: any) {
+      const apiUrl = `api/app/approved-team/${id}`;
+      return this.http.put(apiUrl, data);
+  }
+
+  deleteTeam(id: string) {
+      const apiUrl = `api/app/approved-team/${id}`;
+      return this.http.delete(apiUrl);
   }
 }

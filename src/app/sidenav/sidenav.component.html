@@ -1,1 +1,32 @@
-<p>sidenav works!</p>
+<mat-drawer class="drawer" mode="side" opened="true">
+    <div class="drawer-content">
+        <!-- Buttons added below drawer content text -->
+        <button mat-raised-button color="primary" class="btn" (click)="navigateToHome()">
+
+            <mat-icon>add</mat-icon> New Project
+
+        </button>
+        <button mat-raised-button color="secondary" class="btn" (click)="navigateTo()">
+            <mat-icon>group</mat-icon> Approved Team
+        </button>
+
+        <button mat-raised-button color="secondary" class="btn">
+            <mat-icon>folder</mat-icon> Resources
+        </button>
+
+        <button mat-raised-button color="secondary" class="btn">
+            <mat-icon>feedback</mat-icon> Client Feedback
+        </button>
+
+        <button mat-raised-button color="secondary" class="btn">
+            <mat-icon>update</mat-icon> Project Updates
+        </button>
+
+        <button mat-raised-button color="secondary" class="btn">
+            <mat-icon>event_note</mat-icon> MoM
+        </button>
+        <!-- End of buttons -->
+    </div>
+
+
+</mat-drawer>
