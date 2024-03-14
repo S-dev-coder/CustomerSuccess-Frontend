@@ -19,7 +19,7 @@ export class ApprovedTeamService {
       return this.http.get(apiUrl);
   }
 
-  createTeam(data: any) {
+  createTeam(data: any): Observable<any> {
       return this.http.post('api/app/approved-team', data);
   }
 

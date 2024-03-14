@@ -47,4 +47,10 @@ export class ProjectsComponent {
   navigateTodashboard() {
     this.router.navigate(['/dashboard']);
   }
+  navigateTobudget() {
+    this.router.navigate(['/projectbudget']);
+  }
+  navigateTorisk() {
+    this.router.navigate(['/riskprofile']);
+  }
 }

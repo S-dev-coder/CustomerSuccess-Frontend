@@ -4,7 +4,7 @@
     min-height: 100vh;
   }
   .sidebar{
-    background-color: #f1eded;
+    background-color: rgb(238, 210, 169);
     height:100%;
     width:300px;
   }
@@ -17,12 +17,16 @@
   }
   .main-content {
     width:180vh;
-    padding: 30px; /* Example padding */
+    padding: 30px; 
+    background-color: blanchedalmond;/* Example padding */
   } 
+  .top {
+    padding-bottom: 30px;
+  }
   
   .btn{
     margin: 20px;
-    padding: 15px;
+    padding: 25px;
     width: 200px;
   }
   .mat-stepper-horizontal {
@@ -35,4 +39,8 @@
   
   table {
     width: 100%;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
   }

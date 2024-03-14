@@ -9,9 +9,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ProjectService } from '../services/project.service';
-
-
-
+import { MatDialog } from '@angular/material/dialog'
+import { AddEditComponent } from '../add-edit/add-edit.component';
+import { CoreService } from '../core/core.service';
 
 @Component({
   selector: 'app-home',
@@ -29,10 +29,11 @@ export class HomeComponent {
   isLinear = false;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _projectService: ProjectService, private nav: ProjectService) {
+  constructor(private _formBuilder: FormBuilder, private router: Router, private _projectService: ProjectService, private nav: ProjectService, private _dialog: MatDialog, private _coreService: CoreService) {
     this.getProjectList();
+
   }
-  displayedColumns: string[] = ['name', 'discription', 'project-manager', "action"];
+  displayedColumns: string[] = ['id','name', 'description', 'manager', "action"];
 
   getProjectList() {
     this._projectService.getProjectList().subscribe((res: any) => {
@@ -43,30 +44,52 @@ export class HomeComponent {
 
   deleteProject(id: string) {
     this._projectService.deleteProject(id).subscribe((res: any) => {
-      console.log(res);
+      
+      this._coreService.openSnackBar('Project deleted!', 'done');
       this.getProjectList();
     });
   }
-  
+  openProjectDetails(id: string) {
+    this.router.navigate(['/project-details',id]);
+  }
+
+  openAddEditForm() {
+    const dialogRef = this._dialog.open(AddEditComponent);
+    dialogRef.afterClosed().subscribe({
+      next: (val) => {
+        if (val) {
+          this.getProjectList();
+        }
+      },
+    });
+  }
+
+  openEditForm(data: any) {
+    this._dialog.open(AddEditComponent,{
+      data,
+    });
+    this.getProjectList();
+  }
+
   navigateToteam() {
     this.router.navigate(['/approved-team']);
   }
   navigateToHome() {
     this.router.navigate(['/']);
   }
-  navigateToresource(){
+  navigateToresource() {
     this.router.navigate(['/resources']);
   }
-  navigateToclientfeedback(){
+  navigateToclientfeedback() {
     this.router.navigate(['/clientfeedback']);
   }
-  navigateToprojectUpdate(){
+  navigateToprojectUpdate() {
     this.router.navigate(['/projectupdate']);
   }
-  navigateToProjects(){
+  navigateToProjects() {
     this.router.navigate(['/projects']);
   }
-  navigateTodashboard(){
+  navigateTodashboard() {
     this.router.navigate(['/dashboard']);
   }
 }

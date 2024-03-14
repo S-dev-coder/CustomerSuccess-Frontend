@@ -8,6 +8,8 @@ import { ApprovedTeamService } from '../services/approved-team.service';
 import { NgForm } from '@angular/forms';
 import {PeriodicElement} from '../Model/team';
 import { ResourceService } from '../services/resource.service';
+import { AddEditComponent } from '../add-edit/add-edit.component';
+import {MatDialog} from '@angular/material/dialog' ;
 
 @Component({
   selector: 'app-resources',
@@ -25,7 +27,7 @@ export class ResourcesComponent {
   isLinear = false;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _resourceService: ResourceService, private nav: ResourceService) {
+  constructor(private _formBuilder: FormBuilder, private router: Router, private _resourceService: ResourceService, private nav: ResourceService,private _dialog: MatDialog) {
     this.getResourceList();
   }
   displayedColumns: string[] = ['name', 'role', 'start','end' ,'comment', "action"];
@@ -44,6 +46,10 @@ export class ResourcesComponent {
     });
   }
   
+  openAddEditForm(){
+    this._dialog.open(AddEditComponent);
+    }
+    
   navigateTo() {
     this.router.navigate(['/approved-team']);
   }
@@ -67,5 +73,11 @@ export class ResourcesComponent {
   }
   navigateTodashboard(){
     this.router.navigate(['/dashboard']);
+  }
+  navigateTobudget() {
+    this.router.navigate(['/projectbudget']);
+  }
+  navigateTorisk() {
+    this.router.navigate(['/riskprofile']);
   }
 }

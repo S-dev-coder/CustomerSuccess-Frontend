@@ -18,7 +18,7 @@
 
             </button>
 
-            <button mat-raised-button color="secondary" class="btn" (click)="navigateToteam()">
+            <!-- <button mat-raised-button color="secondary" class="btn" (click)="navigateToteam()">
                 <mat-icon>group</mat-icon> Approved Team
             </button>
 
@@ -36,7 +36,7 @@
 
             <button mat-raised-button color="secondary" class="btn" (click)="navigateToMoM()">
                 <mat-icon>event_note</mat-icon> MoM
-            </button>
+            </button> -->
             <!-- End of buttons -->
         </div>
     </mat-drawer>
@@ -128,20 +128,20 @@
                         <!-- Name Column -->
                         <ng-container matColumnDef="name">
                             <th mat-header-cell *matHeaderCellDef> Started on </th>
-                            <td mat-cell *matCellDef="let element"> {{element.creationTime}} </td>
+                            <td mat-cell *matCellDef="let element">{{ element.creationTime | date: 'dd/MM/yyyy' }}</td>
                         </ng-container>
 
                         <!-- Weight Column -->
-                        <ng-container matColumnDef="weight">
+                        <!-- <ng-container matColumnDef="weight">
                             <th mat-header-cell *matHeaderCellDef>Status </th>
                             <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
                         </ng-container>
 
                         <!-- Symbol Column -->
-                        <ng-container matColumnDef="symbol">
+                        <!-- <ng-container matColumnDef="symbol">
                             <th mat-header-cell *matHeaderCellDef> Project Manager </th>
-                            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                        </ng-container>
+                            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td> -->
+                        <!-- </ng-container> --> 
 
 
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

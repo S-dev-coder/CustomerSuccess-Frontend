@@ -1,0 +1,42 @@
+<div mat-dialog-title>
+    <h1>Project Form</h1>
+</div>
+<form  [formGroup]="projectForm" (ngSubmit)="onFormSubmit()" >
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Id</mat-label>
+                <input matInput type="number" placeholder="Id" formControlName="id">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Project name</mat-label>
+                <input matInput type="text" placeholder="Ex. Technical" formControlName="name">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Description</mat-label>
+                <input matInput type="email" placeholder="Ex. test@gmail.com" formControlName="description">
+            </mat-form-field>
+           
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Manager</mat-label>
+                <mat-select formControlName="manager">
+                    <mat-option *ngFor="let val of manager" [value]="val">{{val}} 
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+</form>

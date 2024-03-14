@@ -16,6 +16,10 @@ export class FeedbackService {
         const apiUrl = `api/app/client-feedback/${id}`;
         return this.http.get(apiUrl);
     }
+    getAllFeedbacksForProject(projectId: string) {
+        const apiUrl = `api/app/client-feedback?projectId=${projectId}`;
+        return this.http.get(apiUrl);
+      }
 
     createFeedback(data: any) {
         return this.http.post('api/app/client-feedback', data);

@@ -1,0 +1,53 @@
+
+<div mat-dialog-title>
+    <h1>Approved Team Form</h1>
+</div>
+<form  [formGroup]="teamForm" (ngSubmit)="onFormSubmit()"  >
+    <div mat-dialog-content class="content">
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Phase Id</mat-label>
+                <input matInput type="number" placeholder="Ex. Technical" formControlName="id">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Phase Name</mat-label>
+                <input matInput type="number" placeholder="Ex. Technical" formControlName="id">
+            </mat-form-field>
+          </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Number of Resources</mat-label>
+                <input matInput type="number" placeholder="Ex. Technical" formControlName="noOfResources">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Role </mat-label>
+                <input matInput type="text" placeholder="Ex. test@gmail.com" formControlName="role">
+            </mat-form-field>
+           
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Availability </mat-label>
+                <input matInput type="number" placeholder="Ex. test@gmail.com" formControlName="availablity">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Duration </mat-label>
+                <input matInput type="text" placeholder="Ex. test@gmail.com" formControlName="duration">
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+</form>

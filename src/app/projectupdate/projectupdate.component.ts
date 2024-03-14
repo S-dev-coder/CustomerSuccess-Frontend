@@ -10,6 +10,8 @@ import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ProjectService } from '../services/project.service';
 import { ProjectUpdateService } from '../services/project-update.service';
+import {MatDialog} from '@angular/material/dialog' ;
+import { AddEditComponent } from '../add-edit/add-edit.component';
 
 @Component({
   selector: 'app-projectupdate',
@@ -28,11 +30,14 @@ export class ProjectupdateComponent {
   isLinear = false;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _projectupdateService: ProjectUpdateService, private nav: ProjectUpdateService) {
+  constructor(private _formBuilder: FormBuilder, private router: Router, private _projectupdateService: ProjectUpdateService, private nav: ProjectUpdateService,private _dialog: MatDialog) {
     this.getUpdateList();
   }
   displayedColumns: string[] = ['date', 'generalUpdates', "action"];
 
+  openAddEditForm(){
+    this._dialog.open(AddEditComponent);
+    }
   getUpdateList() {
     this._projectupdateService.getUpdateList().subscribe((res: any) => {
       console.log(res.items);
@@ -71,5 +76,11 @@ export class ProjectupdateComponent {
   }
   navigateTodashboard() {
     this.router.navigate(['/dashboard']);
+  }
+  navigateTobudget() {
+    this.router.navigate(['/projectbudget']);
+  }
+  navigateTorisk() {
+    this.router.navigate(['/riskprofile']);
   }
 }

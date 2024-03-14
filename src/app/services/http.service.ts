@@ -25,7 +25,6 @@ export class HttpService {
                     });
                     this.requestOptions = {
                         headers: this.headers,
-                        withCredentials: true,
                     };
                 }
             }

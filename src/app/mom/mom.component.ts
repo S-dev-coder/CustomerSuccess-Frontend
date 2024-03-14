@@ -9,7 +9,8 @@ import { NgForm } from '@angular/forms';
 import { PeriodicElement } from '../Model/team';
 import { MatTableModule } from '@angular/material/table';
 import { MoMService } from '../services/mom.service';
-
+import {MatDialog} from '@angular/material/dialog'
+import { AddEditComponent } from '../add-edit/add-edit.component';
 @Component({
   selector: 'app-mom',
   templateUrl: './mom.component.html',
@@ -27,11 +28,14 @@ export class MomComponent {
   isLinear = false;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _momService: MoMService, private nav: MoMService) {
+  constructor(private _formBuilder: FormBuilder, private router: Router, private _momService: MoMService, private nav: MoMService,private _dialog: MatDialog) {
     this.getMoMList();
   }
   displayedColumns: string[] = ["meetingDate", "duration", 'moMLink', 'comments', "action"];
 
+  openAddEditForm(){
+    this._dialog.open(AddEditComponent);
+    }
   getMoMList() {
     this._momService.getMoMList().subscribe((res: any) => {
       console.log(res);
@@ -69,5 +73,11 @@ export class MomComponent {
   }
   navigateTodashboard() {
     this.router.navigate(['/dashboard']);
+  }
+  navigateTobudget() {
+    this.router.navigate(['/projectbudget']);
+  }
+  navigateTorisk() {
+    this.router.navigate(['/riskprofile']);
   }
 }

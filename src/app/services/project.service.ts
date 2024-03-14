@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
-
+import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
@@ -17,7 +17,7 @@ export class ProjectService {
         return this.http.get(apiUrl);
     }
 
-    createProject(data: any) {
+    createProject(data: any): Observable<any> {
         return this.http.post('api/app/project', data);
     }
 

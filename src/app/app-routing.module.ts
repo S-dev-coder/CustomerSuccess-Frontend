@@ -8,6 +8,9 @@ import { ProjectupdateComponent } from './projectupdate/projectupdate.component'
 import { MomComponent } from './mom/mom.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { ProjectbudgetComponent } from './projectbudget/projectbudget.component';
+import { RiskprofileComponent } from './riskprofile/riskprofile.component';
 
 
 const routes: Routes = [
@@ -15,10 +18,16 @@ const routes: Routes = [
   { path: 'approved-team', component: ApprovedTeamComponent },
   { path: 'resources', component: ResourcesComponent },
   { path: 'clientfeedback', component: ClientfeedbackComponent },
-  { path: 'projectupdate', component: ProjectupdateComponent},
+  { path: 'projectupdate', component: ProjectupdateComponent },
   { path: 'meetingminutes', component: MomComponent },
   { path: 'projects', component: ProjectsComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'project-details/:id', component: ProjectDetailsComponent },
+  { path: 'projectbudget', component: ProjectbudgetComponent },
+  { path: 'riskprofile', component: RiskprofileComponent }
+
+
+
   // Route to Home component
   // Add more routes here if needed
 ];

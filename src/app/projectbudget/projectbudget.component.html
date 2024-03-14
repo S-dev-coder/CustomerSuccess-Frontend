@@ -1,0 +1,108 @@
+<mat-drawer-container class="content-container">
+    <mat-drawer mode="side" class="sidebar" opened="true">
+        <div class="drawer-content">
+            <!-- Buttons added below drawer content text -->
+            <button mat-raised-button color="primary" class="btn" (click)="navigateToHome()">
+
+                <mat-icon>add</mat-icon> New Project
+
+            </button>
+
+            <button mat-raised-button color="secondary" class="btn" (click)="navigateToteam()">
+                <mat-icon>group</mat-icon> Approved Team
+            </button>
+
+            <button mat-raised-button color="secondary" class="btn" (click)="navigateToresource()">
+                <mat-icon>folder</mat-icon> Resources
+            </button>
+
+            <button mat-raised-button color="secondary" class="btn" (click)=" navigateToclientfeedback()">
+                <mat-icon>feedback</mat-icon> Client Feedback
+            </button>
+
+            <button mat-raised-button color="secondary" class="btn" (click)="navigateToprojectUpdate()">
+                <mat-icon>update</mat-icon> Project Updates
+            </button>
+
+            <button mat-raised-button color="secondary" class="btn" (click)="navigateToMoM()">
+                <mat-icon>event_note</mat-icon> MoM
+            </button>
+            <button mat-raised-button color="secondary" class="btn" (click)="navigateTobudget()">
+                <mat-icon>work</mat-icon> Project Budget
+            </button>
+            <button mat-raised-button color="secondary" class="btn" (click)="navigateTorisk()">
+                <mat-icon>notification</mat-icon> Risk Profiling
+            </button>
+            <button mat-raised-button color="secondary" class="btn" (click)="navigateToMoM()">
+                <mat-icon>mail</mat-icon> Sprintwise Details
+            </button>
+            <button mat-raised-button color="secondary" class="btn" (click)="navigateToMoM()">
+                <mat-icon>check_circle</mat-icon> Escalation Matrix
+            </button>
+            <button mat-raised-button color="secondary" class="btn" (click)="navigateToMoM()">
+                <mat-icon>info</mat-icon> Version History
+            </button>
+            <button mat-raised-button color="secondary" class="btn" (click)="navigateToMoM()">
+                <mat-icon>verified_user</mat-icon> Stake Holders
+            </button>
+            <!-- End of buttons -->
+        </div>
+    </mat-drawer>
+
+    <mat-drawer-content class="main-content">
+        <div class="top">
+            <mat-toolbar color="primary">
+                <span>Project Budget </span>
+                <span class="example-spacer"></span>
+                <button mat-raised-button (click)="openAddEditForm()">
+                    Add Project Budget
+                </button>
+            </mat-toolbar>
+        </div>
+        <div>
+            <table mat-table class="mat-elevation-z8">
+
+                <!--- Note that these columns can be defined in any order.
+               The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Position Column -->
+                <!-- Position Column -->
+                <ng-container matColumnDef="meetingDate">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.meetingDate | date: 'dd/MM/yyyy'}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="duration">
+                    <th mat-header-cell *matHeaderCellDef> Duration </th>
+                    <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="moMLink">
+                    <th mat-header-cell *matHeaderCellDef> MoM Link </th>
+                    <td mat-cell *matCellDef="let element"> {{element.moMLink}} </td>
+                </ng-container>
+                <ng-container matColumnDef="comments">
+                    <th mat-header-cell *matHeaderCellDef> Comments </th>
+                    <td mat-cell *matCellDef="let element"> {{element.comments}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-raised-button color="primary">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-raised-button color="warn">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+
+    </mat-drawer-content>
+
+</mat-drawer-container>

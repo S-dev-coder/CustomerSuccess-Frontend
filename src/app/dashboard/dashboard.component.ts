@@ -13,8 +13,7 @@ import { ProjectService } from '../services/project.service';
 export interface PeriodicElement {
   name: string;
   position: number;
-  weight: number;
-  symbol: string;
+
 }
 
 
@@ -30,7 +29,7 @@ export class DashboardComponent {
     this.getProjectList();
   }
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name'];
 
   getProjectList() {
     this._projectService.getProjectList().subscribe((res: any) => {
@@ -61,5 +60,11 @@ export class DashboardComponent {
   }
   navigateTodashboard() {
     this.router.navigate(['/dashboard']);
+  }
+  navigateTobudget() {
+    this.router.navigate(['/projectbudget']);
+  }
+  navigateTorisk() {
+    this.router.navigate(['/riskprofile']);
   }
 }

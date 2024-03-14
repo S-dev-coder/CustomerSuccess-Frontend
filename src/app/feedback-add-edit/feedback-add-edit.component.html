@@ -1,0 +1,53 @@
+
+<div mat-dialog-title>
+    <h1>Client Feedback Form</h1>
+</div>
+<form  [formGroup]="feedbackForm" (ngSubmit)="onFormSubmit()" >
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Id</mat-label>
+                <input matInput type="string" placeholder="Ex. Technical" formControlName="projectId">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Feedback Type</mat-label>
+                <input matInput type="number" placeholder="Ex. Technical" formControlName="feedbackType">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label> Date Received </mat-label>
+                <input matInput type="number" placeholder="Ex. test@gmail.com" formControlName="dateReceived">
+            </mat-form-field>
+           
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Detailed Feedback </mat-label>
+                <input matInput type="text" placeholder="Ex. test@gmail.com" formControlName="detailedFeedback">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Action Taken </mat-label>
+                <input matInput type="text" placeholder="Ex. test@gmail.com" formControlName="actionTaken">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Closure Date </mat-label>
+                <input matInput type="number" placeholder="Ex. test@gmail.com" formControlName="closureDate">
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+</form>

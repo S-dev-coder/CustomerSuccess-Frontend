@@ -8,6 +8,10 @@ import { ApprovedTeamService } from '../services/approved-team.service';
 import { NgForm } from '@angular/forms';
 import {PeriodicElement} from '../Model/team';
 import { FeedbackService } from '../services/feedback.service';
+import { AddEditComponent } from '../add-edit/add-edit.component';
+import {MatDialog} from '@angular/material/dialog'
+import { FeedbackAddEditComponent } from '../feedback-add-edit/feedback-add-edit.component';
+
 
 @Component({
   selector: 'app-clientfeedback',
@@ -25,17 +29,29 @@ export class ClientfeedbackComponent {
     secondCtrl: ['', Validators.required],
   });
   isLinear = false;
+  feedbacksForProject:any;
 
-
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _feedbackService: FeedbackService, private nav: FeedbackService) {
-    this.getFeedbackList();
+  constructor(private _formBuilder: FormBuilder, private router: Router, private _feedbackService: FeedbackService, private nav: FeedbackService,private _dialog: MatDialog) {
+    this.getFeedbacksForProject();
   }
   displayedColumns: string[] = ['feedbacktype', 'datereceived', 'detailedfeedabck','actiontaken','closuredate' , "action"];
+ 
+  openAddEditForm(){
+    this._dialog.open(FeedbackAddEditComponent);
+    }
 
   getFeedbackList() {
     this._feedbackService.getFeedbackList().subscribe((res: any) => {
       console.log(res.items);
       this.feedbackList = res.items;
+    });
+  }
+  getFeedbacksForProject() {
+    // Fetch all client feedbacks for the specified project ID
+    const projectId = ''; // Replace 'your_project_id' with the actual project ID
+    this._feedbackService.getAllFeedbacksForProject(projectId).subscribe((res: any) => {
+      console.log(res);
+      this.feedbackList = res.items; // Assign fetched feedback data to feedbackList
     });
   }
 
@@ -69,5 +85,11 @@ export class ClientfeedbackComponent {
   }
   navigateTodashboard(){
     this.router.navigate(['/dashboard']);
+  }
+  navigateTobudget() {
+    this.router.navigate(['/projectbudget']);
+  }
+  navigateTorisk() {
+    this.router.navigate(['/riskprofile']);
   }
 }

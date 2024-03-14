@@ -7,7 +7,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ApprovedTeamService } from '../services/approved-team.service';
 import { NgForm } from '@angular/forms';
 import {PeriodicElement} from '../Model/team';
-
+import {MatDialog} from '@angular/material/dialog'
+ import { AddEditComponent } from '../add-edit/add-edit.component';
+import { TeamAddEditComponent } from '../team-add-edit/team-add-edit.component';
 
 
 
@@ -30,10 +32,10 @@ export class ApprovedTeamComponent {
   isLinear = false;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _approvedteamService: ApprovedTeamService, private nav: ApprovedTeamService) {
+  constructor(private _formBuilder: FormBuilder, private router: Router, private _approvedteamService: ApprovedTeamService, private nav: ApprovedTeamService,private _dialog: MatDialog) {
     this.getTeamList();
   }
-  displayedColumns: string[] = ['numberofresources', 'role', 'availability','duration' , "action"];
+  displayedColumns: string[] = ['numberofresources', 'role', 'availablity','duration' , "action"];
 
   getTeamList() {
     this._approvedteamService.getTeamList().subscribe((res: any) => {
@@ -49,6 +51,10 @@ export class ApprovedTeamComponent {
     });
   }
   
+  openAddEditForm(){
+    this._dialog.open(TeamAddEditComponent);
+    }
+
   navigateToteam() {
     this.router.navigate(['/approved-team']);
   }
@@ -73,6 +79,13 @@ export class ApprovedTeamComponent {
   navigateTodashboard(){
     this.router.navigate(['/dashboard']);
   }
+  navigateTobudget() {
+    this.router.navigate(['/projectbudget']);
+  }
+  navigateTorisk() {
+    this.router.navigate(['/riskprofile']);
+  }
+  
 }
 
   
