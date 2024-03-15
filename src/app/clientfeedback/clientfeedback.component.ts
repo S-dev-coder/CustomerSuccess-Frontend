@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
@@ -11,6 +11,7 @@ import { FeedbackService } from '../services/feedback.service';
 import { AddEditComponent } from '../add-edit/add-edit.component';
 import {MatDialog} from '@angular/material/dialog'
 import { FeedbackAddEditComponent } from '../feedback-add-edit/feedback-add-edit.component';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -19,9 +20,11 @@ import { FeedbackAddEditComponent } from '../feedback-add-edit/feedback-add-edit
   styleUrl: './clientfeedback.component.css'
 })
 
-export class ClientfeedbackComponent {
+export class ClientfeedbackComponent implements OnInit{
 
-  feedbackList: any;
+  feedbackList: any[] = [];
+  feedbackListAll:any;
+
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -30,30 +33,55 @@ export class ClientfeedbackComponent {
   });
   isLinear = false;
   feedbacksForProject:any;
+window: any;
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _feedbackService: FeedbackService, private nav: FeedbackService,private _dialog: MatDialog) {
-    this.getFeedbacksForProject();
+
+  constructor(private _formBuilder: FormBuilder, private router: Router, public _feedbackService: FeedbackService, private nav: FeedbackService,private _dialog: MatDialog) {
+    this. getFeedbackList();
   }
+
   displayedColumns: string[] = ['feedbacktype', 'datereceived', 'detailedfeedabck','actiontaken','closuredate' , "action"];
  
   openAddEditForm(){
     this._dialog.open(FeedbackAddEditComponent);
     }
 
-  getFeedbackList() {
-    this._feedbackService.getFeedbackList().subscribe((res: any) => {
-      console.log(res.items);
-      this.feedbackList = res.items;
-    });
-  }
-  getFeedbacksForProject() {
-    // Fetch all client feedbacks for the specified project ID
-    const projectId = ''; // Replace 'your_project_id' with the actual project ID
-    this._feedbackService.getAllFeedbacksForProject(projectId).subscribe((res: any) => {
-      console.log(res);
-      this.feedbackList = res.items; // Assign fetched feedback data to feedbackList
-    });
-  }
+    ngOnInit() {
+      this.getFeedbackList();
+    }
+    
+
+
+    getFeedbackList() {
+      this._feedbackService.getFeedbackList().subscribe((res: any) => {
+        this.feedbackListAll = res.items;
+        this.feedbackList = []; // Clear the existing feedbackList array
+        for(let i=0; i<this.feedbackListAll.length; i++) {
+          if(this.feedbackListAll[i].projectId == this._feedbackService.myGlobalVariable) {
+            this.feedbackList.push(this.feedbackListAll[i]);
+          }
+        }
+      });
+    }
+
+getfeedbackbyid(){
+  const Id=  this._feedbackService.myGlobalVariable;
+  console.log(Id);
+  console.log(this.feedbackListAll);
+
+ console.log(this.feedbackList);
+}
+
+  //  extractIdFromUrl(param:string): string | null {
+  //   const url = window.location.href;
+  //   console.log("ueruweruwtryut");
+  //   console.log(url);
+  //   const segments = url.split('/');
+  //   const idSegmentIndex = segments.indexOf(param) + 1;
+  //   return idSegmentIndex >= 0 && idSegmentIndex < segments.length
+  //     ? segments[idSegmentIndex]
+  //     : null;
+  // }
 
   deleteFeedback(id: string) {
     this._feedbackService.deleteFeedback(id).subscribe((res: any) => {
@@ -72,6 +100,7 @@ export class ClientfeedbackComponent {
     this.router.navigate(['/resources']);
   }
   navigateToclientfeedback(){
+    // const Id= this.extractIdFromUrl('clientfeedback')
     this.router.navigate(['/clientfeedback']);
   }
   navigateToprojectUpdate(){

@@ -41,6 +41,7 @@ import { ProjectbudgetComponent } from './projectbudget/projectbudget.component'
 import { BudgetAddEditComponent } from './budget-add-edit/budget-add-edit.component';
 import { RiskprofileComponent } from './riskprofile/riskprofile.component';
 import { RiskAddEditComponent } from './risk-add-edit/risk-add-edit.component';
+import { FeedbackService } from './services/feedback.service';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { RiskAddEditComponent } from './risk-add-edit/risk-add-edit.component';
     provideClientHydration(),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
-    { provide: 'LOCALSTORAGE', useFactory: getLocalStorage }
+    { provide: 'LOCALSTORAGE', useFactory: getLocalStorage },
+    FeedbackService
   ],
   bootstrap: [AppComponent]
 })

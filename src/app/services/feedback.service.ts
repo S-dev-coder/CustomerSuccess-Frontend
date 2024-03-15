@@ -7,7 +7,7 @@ import { HttpService } from './http.service';
 export class FeedbackService {
 
     constructor(private http: HttpService) { }
-
+    public myGlobalVariable: any;
     getFeedbackList() {
         return this.http.get('api/app/client-feedback');
     }
@@ -16,6 +16,7 @@ export class FeedbackService {
         const apiUrl = `api/app/client-feedback/${id}`;
         return this.http.get(apiUrl);
     }
+    
     getAllFeedbacksForProject(projectId: string) {
         const apiUrl = `api/app/client-feedback?projectId=${projectId}`;
         return this.http.get(apiUrl);

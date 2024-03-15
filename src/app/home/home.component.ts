@@ -12,6 +12,8 @@ import { ProjectService } from '../services/project.service';
 import { MatDialog } from '@angular/material/dialog'
 import { AddEditComponent } from '../add-edit/add-edit.component';
 import { CoreService } from '../core/core.service';
+import { FeedbackService } from '../services/feedback.service';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +31,7 @@ export class HomeComponent {
   isLinear = false;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _projectService: ProjectService, private nav: ProjectService, private _dialog: MatDialog, private _coreService: CoreService) {
+  constructor(public feedbackService: FeedbackService,private _formBuilder: FormBuilder, private router: Router, private _projectService: ProjectService, private nav: ProjectService, private _dialog: MatDialog, private _coreService: CoreService) {
     this.getProjectList();
 
   }
@@ -38,6 +40,8 @@ export class HomeComponent {
   getProjectList() {
     this._projectService.getProjectList().subscribe((res: any) => {
       console.log(res.items);
+      console.log("Hi");
+
       this.projectList = res.items;
     });
   }
@@ -50,7 +54,10 @@ export class HomeComponent {
     });
   }
   openProjectDetails(id: string) {
+   this.feedbackService.myGlobalVariable = id;
+   console.log(this.feedbackService.myGlobalVariable + "wuetiqwutiq");
     this.router.navigate(['/project-details',id]);
+    
   }
 
   openAddEditForm() {

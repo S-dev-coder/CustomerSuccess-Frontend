@@ -19,7 +19,7 @@ export class FeedbackAddEditComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.feedbackForm = this._fb.group({
-      projectId: '',
+      projectId : this._feedbackService.myGlobalVariable,
       feedbackType: '',
       dateReceived: '',
       detailedFeedback: '',
