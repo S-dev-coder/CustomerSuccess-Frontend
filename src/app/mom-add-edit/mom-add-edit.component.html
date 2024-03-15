@@ -1,0 +1,46 @@
+<div mat-dialog-title>
+    <h1>MoM Form</h1>
+</div>
+<form [formGroup]="momForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Id</mat-label>
+                <input matInput type="string" placeholder="Ex. Technical" formControlName="projectId">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Date</mat-label>
+                <input matInput type="datetime-local" placeholder="Ex. Technical" formControlName="meetingDate">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label> Duration </mat-label>
+                <input matInput type="number" placeholder="Ex. test@gmail.com" formControlName="duration">
+            </mat-form-field>
+
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>MoM Link </mat-label>
+                <input matInput type="text" placeholder="Ex. test@gmail.com" formControlName="moMLink">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Comments </mat-label>
+                <input matInput type="text" placeholder="Ex. test@gmail.com" formControlName="comments">
+            </mat-form-field>
+        </div>
+
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+</form>

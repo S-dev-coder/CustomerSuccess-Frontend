@@ -21,7 +21,7 @@
         <div class="row">
             <mat-form-field appearance="outline">
                 <mat-label> Date Received </mat-label>
-                <input matInput type="number" placeholder="Ex. test@gmail.com" formControlName="dateReceived">
+                <input matInput type="datetime-local" placeholder="Ex. test@gmail.com" formControlName="dateReceived">
             </mat-form-field>
            
         </div>
@@ -33,16 +33,17 @@
             </mat-form-field>
         </div>
         <div class="row">
-            <mat-form-field appearance="outline">
+            <mat-radio-group formControlName="actionTaken">
                 <mat-label>Action Taken </mat-label>
-                <input matInput type="text" placeholder="Ex. test@gmail.com" formControlName="actionTaken">
-            </mat-form-field>
+                <mat-radio-button [value]="true">Yes</mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+            </mat-radio-group>
         </div>
 
         <div class="row">
             <mat-form-field appearance="outline">
                 <mat-label>Closure Date </mat-label>
-                <input matInput type="number" placeholder="Ex. test@gmail.com" formControlName="closureDate">
+                <input matInput type="datetime-local" placeholder="Ex. test@gmail.com" formControlName="closureDate">
             </mat-form-field>
         </div>
     </div>

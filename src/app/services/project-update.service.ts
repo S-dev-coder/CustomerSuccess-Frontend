@@ -5,7 +5,8 @@ import { HttpService } from './http.service';
     providedIn: 'root'
 })
 export class ProjectUpdateService {
-
+    public myGlobalVariable: any;
+    
     constructor(private http: HttpService) { }
 
     getUpdateList() {

@@ -1,0 +1,32 @@
+
+<div mat-dialog-title>
+    <h1>Project Update Form</h1>
+</div>
+<form  [formGroup]="updateForm" (ngSubmit)="onFormSubmit()" >
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Id</mat-label>
+                <input matInput type="string" placeholder="Ex. Technical" formControlName="projectId">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Date</mat-label>
+                <input matInput type="datetime-local" placeholder="Ex. Technical" formControlName="date">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>General Updates</mat-label>
+                <input matInput type="text" placeholder="Ex. Technical" formControlName="generalUpdates">
+            </mat-form-field>
+        </div>
+
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+</form>

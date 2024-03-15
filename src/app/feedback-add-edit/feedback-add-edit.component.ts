@@ -1,5 +1,5 @@
-import { Component, Inject,OnInit } from '@angular/core';
-import { FormBuilder, FormGroup,FormControl } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { FeedbackService } from '../services/feedback.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -10,16 +10,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 
 
-export class FeedbackAddEditComponent implements OnInit{
+export class FeedbackAddEditComponent {
   feedbackForm: FormGroup;
 
 
   constructor(
-    private _fb: FormBuilder, private _feedbackService: FeedbackService,private _dialogRef: MatDialogRef<FeedbackAddEditComponent>,
+    private _fb: FormBuilder, private _feedbackService: FeedbackService, private _dialogRef: MatDialogRef<FeedbackAddEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.feedbackForm = this._fb.group({
-      projectId : this._feedbackService.myGlobalVariable,
+      projectId: this._feedbackService.myGlobalVariable,
       feedbackType: '',
       dateReceived: '',
       detailedFeedback: '',
@@ -28,23 +28,26 @@ export class FeedbackAddEditComponent implements OnInit{
     });
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    console.log(this.feedbackForm.value);
+
+    this.feedbackForm.patchValue(this.data);
   }
 
   onFormSubmit() {
     if (this.feedbackForm.valid) {
-this._feedbackService.createFeedback(this.feedbackForm.value).subscribe({
-next: (val: any) => { 
-alert('Feedback added ');
-this._dialogRef.close();
-},
-error: (err: any) => {  
-console.error('Error occurred during feedback creation:', err);
-}
+      console.log(this.feedbackForm.value);
+      this._feedbackService.createFeedback(this.feedbackForm.value).subscribe({
+        next: (val: any) => {
+          alert('Feedback added ');
+          this._dialogRef.close();
+        },
+        error: (err: any) => {
+          console.error('Error occurred during feedback creation:', err);
+        }
 
 
 
-    })
-  }
+      })
+    }
   }
 }

@@ -72,16 +72,12 @@ getfeedbackbyid(){
  console.log(this.feedbackList);
 }
 
-  //  extractIdFromUrl(param:string): string | null {
-  //   const url = window.location.href;
-  //   console.log("ueruweruwtryut");
-  //   console.log(url);
-  //   const segments = url.split('/');
-  //   const idSegmentIndex = segments.indexOf(param) + 1;
-  //   return idSegmentIndex >= 0 && idSegmentIndex < segments.length
-  //     ? segments[idSegmentIndex]
-  //     : null;
-  // }
+openEditForm(data: any) {
+  this._dialog.open(FeedbackAddEditComponent,{
+    data,
+  });
+  this.getFeedbackList();
+}
 
   deleteFeedback(id: string) {
     this._feedbackService.deleteFeedback(id).subscribe((res: any) => {

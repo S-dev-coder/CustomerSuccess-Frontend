@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,6 +12,7 @@ import { ProjectService } from '../services/project.service';
 import { ProjectUpdateService } from '../services/project-update.service';
 import {MatDialog} from '@angular/material/dialog' ;
 import { AddEditComponent } from '../add-edit/add-edit.component';
+import { UpdateAddEditComponent } from '../update-add-edit/update-add-edit.component';
 
 @Component({
   selector: 'app-projectupdate',
@@ -19,8 +20,11 @@ import { AddEditComponent } from '../add-edit/add-edit.component';
   styleUrl: './projectupdate.component.css'
 })
 
-export class ProjectupdateComponent {
-  updateList: any;
+
+export class ProjectupdateComponent implements OnInit{
+  updateList: any[]= [];
+  updateListAll: any;
+
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
@@ -36,13 +40,34 @@ export class ProjectupdateComponent {
   displayedColumns: string[] = ['date', 'generalUpdates', "action"];
 
   openAddEditForm(){
-    this._dialog.open(AddEditComponent);
+    this._dialog.open(UpdateAddEditComponent);
     }
+
+    ngOnInit() {
+      this.getUpdateList();
+    }
+    
+
   getUpdateList() {
     this._projectupdateService.getUpdateList().subscribe((res: any) => {
       console.log(res.items);
-      this.updateList = res.items;
+      this.updateListAll = res.items;
+      this.updateList = []; // Clear the existing updateList array
+      for(let i=0; i<this.updateListAll.length; i++) {
+        if(this.updateListAll[i].projectId == this._projectupdateService.myGlobalVariable) {
+          this.updateList.push(this.updateListAll[i]);
+        }
+      }
     });
+
+  }
+  openEditForm(data: any) {
+    console.log(data);
+    this._dialog.open(UpdateAddEditComponent,{
+      data,
+
+    });
+    this.getUpdateList();
   }
 
   deleteUpdate(id: string) {

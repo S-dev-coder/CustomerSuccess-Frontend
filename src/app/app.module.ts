@@ -20,7 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormField } from '@angular/material/form-field';
 import { DatePipe } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { ApprovedTeamComponent } from './approved-team/approved-team.component';
@@ -42,6 +42,10 @@ import { BudgetAddEditComponent } from './budget-add-edit/budget-add-edit.compon
 import { RiskprofileComponent } from './riskprofile/riskprofile.component';
 import { RiskAddEditComponent } from './risk-add-edit/risk-add-edit.component';
 import { FeedbackService } from './services/feedback.service';
+import { ProjectUpdateService } from './services/project-update.service';
+import { UpdateAddEditComponent } from './update-add-edit/update-add-edit.component';
+import { MoMService } from './services/mom.service';
+import { MomAddEditComponent } from './mom-add-edit/mom-add-edit.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,8 @@ import { FeedbackService } from './services/feedback.service';
     BudgetAddEditComponent,
     RiskprofileComponent,
     RiskAddEditComponent,
+    UpdateAddEditComponent,
+    MomAddEditComponent,
 
 
   ],
@@ -75,6 +81,7 @@ import { FeedbackService } from './services/feedback.service';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatRadioModule,
     MatFormFieldModule,
     MatStepperModule,
     MatTableModule,
@@ -97,7 +104,9 @@ import { FeedbackService } from './services/feedback.service';
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
     { provide: 'LOCALSTORAGE', useFactory: getLocalStorage },
-    FeedbackService
+    FeedbackService,
+    ProjectUpdateService,
+    MoMService
   ],
   bootstrap: [AppComponent]
 })

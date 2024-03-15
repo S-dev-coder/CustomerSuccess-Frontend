@@ -14,6 +14,8 @@ import { AddEditComponent } from '../add-edit/add-edit.component';
 import { CoreService } from '../core/core.service';
 import { FeedbackService } from '../services/feedback.service';
 import { Console } from 'console';
+import { ProjectUpdateService } from '../services/project-update.service';
+import { MoMService } from '../services/mom.service';
 
 @Component({
   selector: 'app-home',
@@ -31,11 +33,18 @@ export class HomeComponent {
   isLinear = false;
 
 
-  constructor(public feedbackService: FeedbackService,private _formBuilder: FormBuilder, private router: Router, private _projectService: ProjectService, private nav: ProjectService, private _dialog: MatDialog, private _coreService: CoreService) {
+  constructor(public feedbackService: FeedbackService, 
+    private _formBuilder: FormBuilder,
+     private router: Router,
+      private _projectService: ProjectService, 
+       private _dialog: MatDialog,
+        private _coreService: CoreService, 
+        public _projectupdateService: ProjectUpdateService,
+        public _momService: MoMService) {
     this.getProjectList();
 
   }
-  displayedColumns: string[] = ['id','name', 'description', 'manager', "action"];
+  displayedColumns: string[] = ['id', 'name', 'description', 'manager', "action"];
 
   getProjectList() {
     this._projectService.getProjectList().subscribe((res: any) => {
@@ -48,16 +57,19 @@ export class HomeComponent {
 
   deleteProject(id: string) {
     this._projectService.deleteProject(id).subscribe((res: any) => {
-      
+
       this._coreService.openSnackBar('Project deleted!', 'done');
       this.getProjectList();
     });
   }
   openProjectDetails(id: string) {
-   this.feedbackService.myGlobalVariable = id;
-   console.log(this.feedbackService.myGlobalVariable + "wuetiqwutiq");
-    this.router.navigate(['/project-details',id]);
-    
+    this.feedbackService.myGlobalVariable = id;
+    this._projectupdateService.myGlobalVariable = id;
+    this._momService.myGlobalVariable = id;
+
+    console.log(this.feedbackService.myGlobalVariable + "wuetiqwutiq");
+    this.router.navigate(['/project-details', id]);
+
   }
 
   openAddEditForm() {
@@ -72,7 +84,7 @@ export class HomeComponent {
   }
 
   openEditForm(data: any) {
-    this._dialog.open(AddEditComponent,{
+    this._dialog.open(AddEditComponent, {
       data,
     });
     this.getProjectList();

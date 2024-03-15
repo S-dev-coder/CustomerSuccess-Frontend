@@ -7,7 +7,7 @@ import { HttpService } from './http.service';
     providedIn: 'root'
 })
 export class MoMService {
-
+    public myGlobalVariable: any;
     constructor(private http: HttpService) { }
 
     getMoMList() {
