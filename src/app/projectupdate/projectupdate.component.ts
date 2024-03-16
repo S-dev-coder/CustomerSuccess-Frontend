@@ -14,6 +14,7 @@ import {MatDialog} from '@angular/material/dialog' ;
 import { AddEditComponent } from '../add-edit/add-edit.component';
 import { UpdateAddEditComponent } from '../update-add-edit/update-add-edit.component';
 
+
 @Component({
   selector: 'app-projectupdate',
   templateUrl: './projectupdate.component.html',
@@ -58,6 +59,7 @@ export class ProjectupdateComponent implements OnInit{
           this.updateList.push(this.updateListAll[i]);
         }
       }
+      
     });
 
   }

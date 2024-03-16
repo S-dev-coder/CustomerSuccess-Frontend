@@ -40,7 +40,8 @@ export class HomeComponent {
        private _dialog: MatDialog,
         private _coreService: CoreService, 
         public _projectupdateService: ProjectUpdateService,
-        public _momService: MoMService) {
+        public _momService: MoMService,
+      ) {
     this.getProjectList();
 
   }

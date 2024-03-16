@@ -7,7 +7,7 @@
 .sidebar {
   background-color: rgb(238, 210, 169);
   height: 100%;
-  width: 380px;
+  width: 350px;
 }
 
 .drawer-content {
@@ -25,9 +25,10 @@
 }
 
 .btn {
-  margin: 25px;
-  padding: 35px;
+  margin: 40px;
+  padding: 25px;
   width: 200px;
+  gap:2px;
 }
 
 .mat-stepper-horizontal {

@@ -14,6 +14,7 @@ import { FeedbackAddEditComponent } from '../feedback-add-edit/feedback-add-edit
 import { Location } from '@angular/common';
 
 
+
 @Component({
   selector: 'app-clientfeedback',
   templateUrl: './clientfeedback.component.html',
@@ -36,7 +37,8 @@ export class ClientfeedbackComponent implements OnInit{
 window: any;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, public _feedbackService: FeedbackService, private nav: FeedbackService,private _dialog: MatDialog) {
+  constructor(private _formBuilder: FormBuilder,
+     private router: Router, public _feedbackService: FeedbackService, private nav: FeedbackService,private _dialog: MatDialog) {
     this. getFeedbackList();
   }
 
@@ -61,6 +63,7 @@ window: any;
             this.feedbackList.push(this.feedbackListAll[i]);
           }
         }
+        
       });
     }
 

@@ -12,6 +12,7 @@ import { MoMService } from '../services/mom.service';
 import {MatDialog} from '@angular/material/dialog'
 import { AddEditComponent } from '../add-edit/add-edit.component';
 import { MomAddEditComponent } from '../mom-add-edit/mom-add-edit.component';
+
 @Component({
   selector: 'app-mom',
   templateUrl: './mom.component.html',
@@ -30,7 +31,8 @@ export class MomComponent {
   isLinear = false;
 
 
-  constructor(private _formBuilder: FormBuilder, private router: Router, private _momService: MoMService,public _dialog: MatDialog) {
+  constructor(private _formBuilder: FormBuilder,
+     private router: Router, private _momService: MoMService,public _dialog: MatDialog) {
     this.getMoMList();
   }
   displayedColumns: string[] = ["meetingDate", "duration", 'moMLink', 'comments', "action"];
@@ -56,6 +58,7 @@ export class MomComponent {
           this.momList.push(this.momListAll[i]);
         }
       }
+     
     });
   }
 

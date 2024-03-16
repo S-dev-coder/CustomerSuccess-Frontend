@@ -47,6 +47,7 @@ import { UpdateAddEditComponent } from './update-add-edit/update-add-edit.compon
 import { MoMService } from './services/mom.service';
 import { MomAddEditComponent } from './mom-add-edit/mom-add-edit.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +70,7 @@ import { MomAddEditComponent } from './mom-add-edit/mom-add-edit.component';
     RiskAddEditComponent,
     UpdateAddEditComponent,
     MomAddEditComponent,
+    
 
 
   ],
@@ -106,11 +108,11 @@ import { MomAddEditComponent } from './mom-add-edit/mom-add-edit.component';
     { provide: 'LOCALSTORAGE', useFactory: getLocalStorage },
     FeedbackService,
     ProjectUpdateService,
-    MoMService
+    MoMService,
+  
   ],
   bootstrap: [AppComponent]
 })
-
 
 export class AppModule {
   firstFormGroup = this._formBuilder.group({
