@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuditHistoryService } from '../services/history.service';
 import { HistoryAddEditComponent } from '../history-add-edit/history-add-edit.component';
+import { StakeholderService } from '../services/stakeholder.service';
+import { NotificationService } from '../services/notification.service';
 
 @Component({
   selector: 'app-audithistory',
@@ -16,7 +18,11 @@ export class AudithistoryComponent {
   historyList: any[] = [];
   
 
-  constructor(private _dialog: MatDialog,private router: Router,public _audithistoryService: AuditHistoryService) {
+  constructor(private _dialog: MatDialog,private router: Router,
+    public notificationService: NotificationService,
+    public _audithistoryService: AuditHistoryService,
+
+    public _stakeholderService: StakeholderService) {
     this.getHistoryList();
   }
  
@@ -37,6 +43,44 @@ export class AudithistoryComponent {
     });
   }
 
+  sendNotification(stakeholder:any) {
+    return new Promise((resolve, reject) => {
+        this.notificationService.sendNotification(stakeholder.contact, stakeholder.name, 'Audit history details updated.', 'http://localhost:4200')
+            .subscribe(response => {
+                console.log('Notification sent successfully:', response);
+                resolve(response);
+            }, error => {
+                console.error('Failed to send notification:', error);
+                reject(error);
+            });
+    });
+}
+
+sendNotificationForAllStakeholder() {
+    return new Promise((resolve, reject) => {
+        this._stakeholderService.getAllStakeholderForProject(this._stakeholderService.myGlobalVariable)
+            .subscribe((res: any) => {
+                console.log(res);
+                const promises = [];
+                for (let i = 0; i < res.length; i++) {
+                    promises.push(this.sendNotification(res[i]));
+                }
+                Promise.all(promises)
+                    .then(results => {
+                        resolve(results);
+                    })
+                    .catch(error => {
+                        reject(error);
+                    });
+            }, error => {
+                reject(error);
+            });
+    });
+}
+
+
+
+
   openAddEditForm() {
     this._dialog.open(HistoryAddEditComponent);
   }
@@ -52,6 +96,7 @@ export class AudithistoryComponent {
     this._audithistoryService.deleteHistory(id).subscribe((res: any) => {
       console.log(res);
       this.getHistoryList();
+      this.sendNotificationForAllStakeholder();
     });
   }
   navigateToteam() {
