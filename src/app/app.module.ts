@@ -46,6 +46,7 @@ import { ProjectUpdateService } from './services/project-update.service';
 import { UpdateAddEditComponent } from './update-add-edit/update-add-edit.component';
 import { MoMService } from './services/mom.service';
 import { MomAddEditComponent } from './mom-add-edit/mom-add-edit.component';
+import { BudgetService } from './services/buget.service';
 
 
 @NgModule({
@@ -70,7 +71,7 @@ import { MomAddEditComponent } from './mom-add-edit/mom-add-edit.component';
     RiskAddEditComponent,
     UpdateAddEditComponent,
     MomAddEditComponent,
-    
+
 
 
   ],
@@ -109,7 +110,8 @@ import { MomAddEditComponent } from './mom-add-edit/mom-add-edit.component';
     FeedbackService,
     ProjectUpdateService,
     MoMService,
-  
+    BudgetService,
+
   ],
   bootstrap: [AppComponent]
 })

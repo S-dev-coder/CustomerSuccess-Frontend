@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { BudgetService } from '../services/buget.service';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { FeedbackService } from '../services/feedback.service';
@@ -17,8 +17,10 @@ export class ProjectDetailsComponent {
   feedbackList: any[] = [];
   updateList: any[] = [];
   momList: any[] = [];
+  budgetList:any[]=[];
   pdfBuffer: ArrayBuffer[] = [];
-  constructor(private _momService: MoMService, private _projectupdateService: ProjectUpdateService, private router: Router, public _feedbackService: FeedbackService) {
+  constructor(private _momService: MoMService, public _budgetService: BudgetService,
+    private _projectupdateService: ProjectUpdateService, private router: Router, public _feedbackService: FeedbackService) {
   }
 
   async generatePDF() {
@@ -26,6 +28,7 @@ export class ProjectDetailsComponent {
       await this.generatePdfforClientfeedback();
       await this.generatePdfforProjectupdate();
       await this.generatePdfforMom();
+      await this.generatePdfforBudget();
 
       const mergedPdfBytes = await this.mergePdfs(this.pdfBuffer);
       const mergedPdfBlob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
@@ -156,6 +159,38 @@ export class ProjectDetailsComponent {
     });
   }
 
+  generatePdfforBudget(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this._budgetService.getBudgetList().subscribe((res: any) => {
+        this.budgetList= [];
+        for (let i = 0; i < res.items.length; i++) {
+          if (res.items[i].projectId == this._budgetService.myGlobalVariable) {
+            this.budgetList.push(res.items[i]);
+          }
+        }
+
+        console.log("hi");
+        const doc = new jsPDF('p', 'mm', 'a4');
+        const budget = [['type', 'durationInMonths', 'budgetedHours']]
+        const budgetlistpdf = [];
+
+        for (let i = 0; i < this. budgetList.length; i++) {
+          budgetlistpdf.push([this. budgetList[i].type,this.budgetList[i].durationInMonths,this. budgetList[i].budgetedHours])
+         }
+
+        (doc as any).autoTable({
+          head: budget,
+          body: budgetlistpdf
+        });
+
+        this.pdfBuffer.push(doc.output('arraybuffer'));
+        resolve();
+      }, error => {
+        reject(error);
+      });
+    });
+  }
+
   navigateToteam() {
     this.router.navigate(['/approved-team']);
   }
@@ -188,7 +223,5 @@ export class ProjectDetailsComponent {
     this.router.navigate(['/riskprofile']);
   }
 }
-function autoTable() {
-  throw new Error('Function not implemented.');
-}
+
 

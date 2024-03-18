@@ -1,1 +1,40 @@
-<p>budget-add-edit works!</p>
+
+<div mat-dialog-title>
+    <h1>Project Budget Form</h1>
+</div>
+<form  [formGroup]="budgetForm" (ngSubmit)="onFormSubmit()" >
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Id</mat-label>
+                <input matInput type="string" placeholder="Ex. Technical" formControlName="projectId">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Type</mat-label>
+                <input matInput type="numbser" placeholder="Ex. Technical" formControlName="type">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Duration (In months) </mat-label>
+                <input matInput type="number" placeholder="Ex. test@gmail.com" formControlName="durationInMonths">
+            </mat-form-field>
+           
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Budgeted Hours </mat-label>
+                <input matInput type="number" placeholder="Ex. test@gmail.com" formControlName="budgetedHours">
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+</form>

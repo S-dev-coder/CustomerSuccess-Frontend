@@ -16,7 +16,7 @@ import { FeedbackService } from '../services/feedback.service';
 import { Console } from 'console';
 import { ProjectUpdateService } from '../services/project-update.service';
 import { MoMService } from '../services/mom.service';
-
+import { BudgetService } from '../services/buget.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -41,6 +41,7 @@ export class HomeComponent {
         private _coreService: CoreService, 
         public _projectupdateService: ProjectUpdateService,
         public _momService: MoMService,
+        public _budgetService: BudgetService,
       ) {
     this.getProjectList();
 
@@ -67,6 +68,7 @@ export class HomeComponent {
     this.feedbackService.myGlobalVariable = id;
     this._projectupdateService.myGlobalVariable = id;
     this._momService.myGlobalVariable = id;
+    this._budgetService.myGlobalVariable = id;
 
     console.log(this.feedbackService.myGlobalVariable + "wuetiqwutiq");
     this.router.navigate(['/project-details', id]);
