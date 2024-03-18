@@ -12,9 +12,6 @@ import { HistoryAddEditComponent } from '../history-add-edit/history-add-edit.co
 export class AudithistoryComponent {
 
   displayedColumns: string[] = ['dateOfAudit', 'reviewedBy', 'status', 'reviewedSection', 'comments', 'actionItem', "action"];
-
-  // _feedbackService: any;
-  // feedbackListAll: any;
   historyListAll: any[] = [];
   historyList: any[] = [];
   
@@ -89,5 +86,8 @@ export class AudithistoryComponent {
   }
   navigateToAudit(){
     this.router.navigate(['/audithistory']);
+  }
+  navigateToStakeholder(){
+    this.router.navigate(['/stakeholder']);
   }
 }

@@ -110,4 +110,7 @@ export class ProjectupdateComponent implements OnInit{
   navigateTorisk() {
     this.router.navigate(['/riskprofile']);
   }
+  navigateToStakeholder(){
+    this.router.navigate(['/stakeholder']);
+  }
 }

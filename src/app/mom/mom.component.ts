@@ -102,4 +102,7 @@ export class MomComponent {
   navigateToAudit(){
     this.router.navigate(['/audithistory']);
   }
+  navigateToStakeholder(){
+    this.router.navigate(['/stakeholder']);
+  }
 }

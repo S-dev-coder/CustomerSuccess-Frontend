@@ -123,4 +123,7 @@ openEditForm(data: any) {
   navigateToAudit(){
     this.router.navigate(['/audithistory']);
   }
+  navigateToStakeholder(){
+    this.router.navigate(['/stakeholder']);
+  }
 }

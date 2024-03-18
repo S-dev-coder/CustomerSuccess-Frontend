@@ -12,6 +12,7 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
 import { ProjectbudgetComponent } from './projectbudget/projectbudget.component';
 import { RiskprofileComponent } from './riskprofile/riskprofile.component';
 import { AudithistoryComponent } from './audithistory/audithistory.component';
+import { StakeholderComponent } from './stakeholder/stakeholder.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'projectbudget', component: ProjectbudgetComponent },
   { path: 'riskprofile', component: RiskprofileComponent },
   { path: 'audithistory', component: AudithistoryComponent },
+  { path: 'stakeholder', component: StakeholderComponent },
 
 
 

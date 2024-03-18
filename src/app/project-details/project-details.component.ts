@@ -9,6 +9,7 @@ import { MoMService } from '../services/mom.service';
 import { PDFDocument } from 'pdf-lib';
 import { RiskProfileService } from '../services/risk-profile.service';
 import { AuditHistoryService } from '../services/history.service';
+import { StakeholderService } from '../services/stakeholder.service';
 
 @Component({
   selector: 'app-project-details',
@@ -22,10 +23,12 @@ export class ProjectDetailsComponent {
   budgetList:any[]=[];
   profileList:any[]=[];
   historyList:any[]=[];
+  stakeholderList:any[]=[];
   pdfBuffer: ArrayBuffer[] = [];
   constructor(private _momService: MoMService, public _budgetService: BudgetService,
     public _riskprofileService: RiskProfileService,
     public _audithistoryService: AuditHistoryService,
+    public _stakeholderService: StakeholderService,
     private _projectupdateService: ProjectUpdateService, private router: Router, public _feedbackService: FeedbackService) {
   }
 
@@ -37,6 +40,7 @@ export class ProjectDetailsComponent {
       await this.generatePdfforBudget();
       await this.generatePdfforRiskProfile();
       await this.generatePdfforAuditHistory();
+      await this.generatePdfforStakeholder();
 
 
 
@@ -265,6 +269,37 @@ export class ProjectDetailsComponent {
     });
   }
 
+  generatePdfforStakeholder(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this._stakeholderService.getStakeholderList().subscribe((res: any) => {
+        this.stakeholderList= [];
+        for (let i = 0; i < res.items.length; i++) {
+          if (res.items[i].projectId == this._stakeholderService.myGlobalVariable) {
+            this.stakeholderList.push(res.items[i]);
+          }
+        }
+
+        console.log("hi");
+        const doc = new jsPDF('p', 'mm', 'a4');
+        const stakeholder= [['title', 'name', 'contact']]
+        const satkeholderlistpdf = [];
+
+        for (let i = 0; i < this.stakeholderList.length; i++) {
+          satkeholderlistpdf.push([this.stakeholderList[i].title,this.stakeholderList[i].name,this.stakeholderList[i].contact])
+         }
+
+        (doc as any).autoTable({
+          head: stakeholder,
+          body:satkeholderlistpdf
+        });
+
+        this.pdfBuffer.push(doc.output('arraybuffer'));
+        resolve();
+      }, error => {
+        reject(error);
+      });
+    });
+  }
 
   navigateToteam() {
     this.router.navigate(['/approved-team']);
@@ -299,6 +334,9 @@ export class ProjectDetailsComponent {
   }
   navigateToAudit() {
     this.router.navigate(['/audithistory']);
+  }
+  navigateToStakeholder(){
+    this.router.navigate(['/stakeholder']);
   }
 }
 

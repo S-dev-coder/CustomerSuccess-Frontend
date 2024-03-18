@@ -80,4 +80,7 @@ export class ResourcesComponent {
   navigateTorisk() {
     this.router.navigate(['/riskprofile']);
   }
+  navigateToStakeholder(){
+    this.router.navigate(['/stakeholder']);
+  }
 }
