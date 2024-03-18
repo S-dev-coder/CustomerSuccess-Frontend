@@ -92,4 +92,7 @@ export class RiskprofileComponent {
   navigateToStakeholder(){
     this.router.navigate(['/stakeholder']);
   }
+  navigateToversion(){
+    this.router.navigate(['/versionhistory']);
+  }
 }

@@ -1,59 +1,62 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { StakeholderService } from '../services/stakeholder.service';
-import { StakeholderAddEditComponent } from '../stakeholder-add-edit/stakeholder-add-edit.component';
+import { VersionHistoryService } from '../services/versionhistory.service';
+import { VersionhistoryAddEditComponent } from '../versionhistory-add-edit/versionhistory-add-edit.component';
 
 @Component({
-  selector: 'app-stakeholder',
-  templateUrl: './stakeholder.component.html',
-  styleUrl: './stakeholder.component.css'
+  selector: 'app-versionhistory',
+  templateUrl: './versionhistory.component.html',
+  styleUrl: './versionhistory.component.css'
 })
-export class StakeholderComponent {
 
-  displayedColumns: string[] = ['title', 'name', 'contact', "action"];
-  stakeholderListAll: any[] = [];
-  stakeholderList: any[] = [];
+
+export class VersionhistoryComponent {
+
+  displayedColumns: string[] = ['version', 'type', 'change','changeReason','createdBy','revisionDate','approvalDate','approvedBy', "action"];
+  versionListAll: any[] = [];
+ versionList: any[] = [];
   
 
-  constructor(private _dialog: MatDialog,private router: Router,public _stakeholderService: StakeholderService) {
-    this.getStakeholderList();
+
+  constructor(private _dialog: MatDialog,private router: Router,public _versionhistoryService: VersionHistoryService) {
+    this.getVersionList();
   }
  
 
   ngOnInit() {
-    this.getStakeholderList();
+    this.getVersionList();
   }
 
 
 
-  getStakeholderList() {
-    console.log(this._stakeholderService.myGlobalVariable);
-    this._stakeholderService.getAllStakeholderForProject(this._stakeholderService.myGlobalVariable).subscribe((res: any) => {
+  getVersionList() {
+    console.log(this._versionhistoryService.myGlobalVariable);
+    this._versionhistoryService.getAllVersionForProject(this._versionhistoryService.myGlobalVariable).subscribe((res: any) => {
       console.log(res);
-      this.stakeholderListAll = res; 
+      this.versionListAll = res; 
       console.log(res.items);// Assuming 'items' is the array of MoM items in the response
-      this.stakeholderList = this.stakeholderListAll; // Assuming you want to assign all items by default
+      this.versionList = this.versionListAll; // Assuming you want to assign all items by default
     });
   }
 
   openAddEditForm() {
-    this._dialog.open(StakeholderAddEditComponent);
+    this._dialog.open(VersionhistoryAddEditComponent);
   }
 
   openEditForm(data: any) {
     console.log(data);
-    this._dialog.open(StakeholderAddEditComponent,{
+    this._dialog.open(VersionhistoryAddEditComponent,{
       data,
 
     });
-    this.getStakeholderList();
+    this.getVersionList();
   }
 
-  deleteStakeholder(id: string) {
-    this. _stakeholderService.deleteStakeholder(id).subscribe((res: any) => {
+  deleteVersion(id: string) {
+    this._versionhistoryService.deleteVersion(id).subscribe((res: any) => {
       console.log(res);
-      this.getStakeholderList();
+      this.getVersionList();
     });
   }
   navigateToteam() {

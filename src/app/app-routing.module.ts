@@ -13,6 +13,7 @@ import { ProjectbudgetComponent } from './projectbudget/projectbudget.component'
 import { RiskprofileComponent } from './riskprofile/riskprofile.component';
 import { AudithistoryComponent } from './audithistory/audithistory.component';
 import { StakeholderComponent } from './stakeholder/stakeholder.component';
+import { VersionhistoryComponent } from './versionhistory/versionhistory.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'riskprofile', component: RiskprofileComponent },
   { path: 'audithistory', component: AudithistoryComponent },
   { path: 'stakeholder', component: StakeholderComponent },
+  { path: 'versionhistory', component: VersionhistoryComponent },
 
 
 

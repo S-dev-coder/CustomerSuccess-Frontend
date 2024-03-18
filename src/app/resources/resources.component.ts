@@ -83,4 +83,7 @@ export class ResourcesComponent {
   navigateToStakeholder(){
     this.router.navigate(['/stakeholder']);
   }
+  navigateToversion(){
+    this.router.navigate(['/versionhistory']);
+  }
 }

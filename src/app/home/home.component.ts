@@ -21,6 +21,7 @@ import { RiskProfileService } from '../services/risk-profile.service';
 import { AudithistoryComponent } from '../audithistory/audithistory.component';
 import { AuditHistoryService } from '../services/history.service';
 import { StakeholderService } from '../services/stakeholder.service';
+import { VersionHistoryService } from '../services/versionhistory.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -49,6 +50,7 @@ export class HomeComponent {
         public _riskprofileService: RiskProfileService , 
         public _audithistoryService:AuditHistoryService,
         public _stakeholderService:StakeholderService,
+        public _versionhistoryService:VersionHistoryService,
       ) {
     this.getProjectList();
 
@@ -79,6 +81,7 @@ export class HomeComponent {
     this._riskprofileService.myGlobalVariable=id;
     this._audithistoryService.myGlobalVariable=id;
     this._stakeholderService.myGlobalVariable=id;
+    this._versionhistoryService.myGlobalVariable=id;
 
     console.log(this.feedbackService.myGlobalVariable + "wuetiqwutiq");
     this.router.navigate(['/project-details', id]);

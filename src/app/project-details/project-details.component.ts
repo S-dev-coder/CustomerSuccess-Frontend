@@ -10,6 +10,7 @@ import { PDFDocument } from 'pdf-lib';
 import { RiskProfileService } from '../services/risk-profile.service';
 import { AuditHistoryService } from '../services/history.service';
 import { StakeholderService } from '../services/stakeholder.service';
+import { VersionHistoryService } from '../services/versionhistory.service';
 
 @Component({
   selector: 'app-project-details',
@@ -23,12 +24,14 @@ export class ProjectDetailsComponent {
   budgetList:any[]=[];
   profileList:any[]=[];
   historyList:any[]=[];
+  versionList:any[]=[];
   stakeholderList:any[]=[];
   pdfBuffer: ArrayBuffer[] = [];
   constructor(private _momService: MoMService, public _budgetService: BudgetService,
     public _riskprofileService: RiskProfileService,
     public _audithistoryService: AuditHistoryService,
     public _stakeholderService: StakeholderService,
+    public _versionhistoryService: VersionHistoryService,
     private _projectupdateService: ProjectUpdateService, private router: Router, public _feedbackService: FeedbackService) {
   }
 
@@ -41,6 +44,7 @@ export class ProjectDetailsComponent {
       await this.generatePdfforRiskProfile();
       await this.generatePdfforAuditHistory();
       await this.generatePdfforStakeholder();
+      await this.generatePdfforVersion();
 
 
 
@@ -301,6 +305,38 @@ export class ProjectDetailsComponent {
     });
   }
 
+  generatePdfforVersion(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this._versionhistoryService.getVersionList().subscribe((res: any) => {
+        this.versionList= [];
+        for (let i = 0; i < res.items.length; i++) {
+          if (res.items[i].projectId == this._versionhistoryService.myGlobalVariable) {
+            this.versionList.push(res.items[i]);
+          }
+        }
+
+        console.log("hi");
+        const doc = new jsPDF('p', 'mm', 'a4');
+        const version= [['version', 'type', 'change','changeReason','createdBy','revisionDate','approvalDate','approvedBy']]
+        const versionlistpdf = [];
+
+        for (let i = 0; i < this.versionList.length; i++) {
+          versionlistpdf.push([this.versionList[i].version,this.versionList[i].type,this.versionList[i].change,this.versionList[i].changeReason,this.versionList[i].createdBy,this.versionList[i].revisionDate,this.versionList[i].approvalDate,this.versionList[i].approvedBy])
+         }
+
+        (doc as any).autoTable({
+          head: version,
+          body:versionlistpdf
+        });
+
+        this.pdfBuffer.push(doc.output('arraybuffer'));
+        resolve();
+      }, error => {
+        reject(error);
+      });
+    });
+  }
+
   navigateToteam() {
     this.router.navigate(['/approved-team']);
   }
@@ -337,6 +373,9 @@ export class ProjectDetailsComponent {
   }
   navigateToStakeholder(){
     this.router.navigate(['/stakeholder']);
+  }
+  navigateToversion(){
+    this.router.navigate(['/versionhistory']);
   }
 }
 

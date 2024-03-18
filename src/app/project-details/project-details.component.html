@@ -6,7 +6,17 @@
 
             <mat-icon>add</mat-icon> New Project
     
-          </button> <!-- Buttons added below drawer content text -->
+          </button> 
+          
+         
+            <!-- <div>
+                <button mat-raised-button color="primary"  (click)="generatePDF()">Download Project Details</button>
+            </div> -->
+            <!-- <button mat-raised-button color="secondary" class="btn" (click)="generatePDF()">
+              <mat-icon>download</mat-icon> Download Project Details
+            </button> -->
+         
+        <!-- Buttons added below drawer content text -->
         <button mat-raised-button color="secondary" class="btn" (click)="navigateToteam()">
           <mat-icon>group</mat-icon> Approved Team
         </button>
@@ -32,15 +42,10 @@
           <button mat-raised-button color="secondary" class="btn" (click)="navigateTorisk()">
             <mat-icon>notification</mat-icon> Risk Profiling
           </button>
-          <button mat-raised-button color="secondary" class="btn" (click)="navigateToMoM()">
-            <mat-icon>mail</mat-icon> Sprintwise Details
-          </button>
-          <button mat-raised-button color="secondary" class="btn" (click)="navigateToMoM()">
-            <mat-icon>check_circle</mat-icon> Escalation Matrix
-          </button>
-          <button mat-raised-button color="secondary" class="btn" (click)="navigateToMoM()">
+         
+          <button mat-raised-button color="secondary" class="btn" (click)="navigateToversion()">
             <mat-icon>info</mat-icon> Version History
-          </button>
+        </button>
           <button mat-raised-button color="secondary" class="btn" (click)="navigateToAudit()">
             <mat-icon>info</mat-icon> Audit History
           </button>
@@ -56,13 +61,10 @@
             <div class="header">
               <h2>Hello Admin !!</h2>
             </div>
-          
-            <div class="button-container">
-                <div>
-                    <button mat-raised-button color="primary"  (click)="generatePDF()">Download All Project Details as PDF</button>
-                </div>
-             
+            <div>
+                <button mat-raised-button color="primary"  (click)="generatePDF()">Download Project Details</button>
             </div>
+            
           </div>
           
   

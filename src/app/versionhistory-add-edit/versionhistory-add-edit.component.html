@@ -1,0 +1,72 @@
+
+<div mat-dialog-title>
+    <h1>Project Budget Form</h1>
+</div>
+<form  [formGroup]="versionForm" (ngSubmit)="onFormSubmit()" >
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Id</mat-label>
+                <input matInput type="string" placeholder="Ex. Technical" formControlName="projectId">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Version</mat-label>
+                <input matInput type="string" placeholder="Ex. Technical" formControlName="version">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Type </mat-label>
+                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="type">
+            </mat-form-field>
+           
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Change </mat-label>
+                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="change">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Change Reason</mat-label>
+                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="changeReason">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Created By </mat-label>
+                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="createdBy">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Revision Date </mat-label>
+                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="revisionDate">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Approval Date </mat-label>
+                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="approvalDate">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Approved By </mat-label>
+                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="approvedBy">
+            </mat-form-field>
+        </div>
+       
+   
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+</form>

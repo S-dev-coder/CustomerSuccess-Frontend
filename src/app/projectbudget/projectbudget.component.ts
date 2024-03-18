@@ -89,4 +89,7 @@ export class ProjectbudgetComponent {
   navigateToAudit(){
     this.router.navigate(['/audithistory']);
   }
+  navigateToversion(){
+    this.router.navigate(['/versionhistory']);
+  }
 }

@@ -55,6 +55,9 @@ import { HistoryAddEditComponent } from './history-add-edit/history-add-edit.com
 import { StakeholderComponent } from './stakeholder/stakeholder.component';
 import { StakeholderAddEditComponent } from './stakeholder-add-edit/stakeholder-add-edit.component';
 import { StakeholderService } from './services/stakeholder.service';
+import { VersionhistoryComponent } from './versionhistory/versionhistory.component';
+import { VersionhistoryAddEditComponent } from './versionhistory-add-edit/versionhistory-add-edit.component';
+import { VersionHistoryService } from './services/versionhistory.service';
 
 
 @NgModule({
@@ -84,6 +87,8 @@ import { StakeholderService } from './services/stakeholder.service';
     HistoryAddEditComponent,
     StakeholderComponent,
     StakeholderAddEditComponent,
+    VersionhistoryComponent,
+    VersionhistoryAddEditComponent,
 
 
 
@@ -127,6 +132,7 @@ import { StakeholderService } from './services/stakeholder.service';
     RiskProfileService,
     AuditHistoryService,
     StakeholderService,
+    VersionHistoryService,
   ],
   bootstrap: [AppComponent]
 })
