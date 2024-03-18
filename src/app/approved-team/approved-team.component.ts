@@ -86,7 +86,9 @@ export class ApprovedTeamComponent {
   navigateTorisk() {
     this.router.navigate(['/riskprofile']);
   }
-  
+  navigateToAudit(){
+    this.router.navigate(['/audithistory']);
+  }
 }
 
   

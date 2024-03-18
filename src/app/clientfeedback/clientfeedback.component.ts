@@ -120,4 +120,7 @@ openEditForm(data: any) {
   navigateTorisk() {
     this.router.navigate(['/riskprofile']);
   }
+  navigateToAudit(){
+    this.router.navigate(['/audithistory']);
+  }
 }

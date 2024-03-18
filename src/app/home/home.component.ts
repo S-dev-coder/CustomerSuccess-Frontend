@@ -17,6 +17,9 @@ import { Console } from 'console';
 import { ProjectUpdateService } from '../services/project-update.service';
 import { MoMService } from '../services/mom.service';
 import { BudgetService } from '../services/buget.service';
+import { RiskProfileService } from '../services/risk-profile.service';
+import { AudithistoryComponent } from '../audithistory/audithistory.component';
+import { AuditHistoryService } from '../services/history.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -42,6 +45,8 @@ export class HomeComponent {
         public _projectupdateService: ProjectUpdateService,
         public _momService: MoMService,
         public _budgetService: BudgetService,
+        public _riskprofileService: RiskProfileService , 
+        public _audithistoryService:AuditHistoryService,
       ) {
     this.getProjectList();
 
@@ -69,6 +74,8 @@ export class HomeComponent {
     this._projectupdateService.myGlobalVariable = id;
     this._momService.myGlobalVariable = id;
     this._budgetService.myGlobalVariable = id;
+    this._riskprofileService.myGlobalVariable=id;
+    this._audithistoryService.myGlobalVariable=id;
 
     console.log(this.feedbackService.myGlobalVariable + "wuetiqwutiq");
     this.router.navigate(['/project-details', id]);

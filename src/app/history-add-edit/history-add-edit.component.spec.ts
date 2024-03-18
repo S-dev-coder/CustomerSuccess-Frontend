@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RiskAddEditComponent } from './risk-add-edit.component';
+import { HistoryAddEditComponent } from './history-add-edit.component';
 
-describe('RiskAddEditComponent', () => {
-  let component: RiskAddEditComponent;
-  let fixture: ComponentFixture<RiskAddEditComponent>;
+describe('HistoryAddEditComponent', () => {
+  let component: HistoryAddEditComponent;
+  let fixture: ComponentFixture<HistoryAddEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [RiskAddEditComponent]
+      declarations: [HistoryAddEditComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(RiskAddEditComponent);
+    fixture = TestBed.createComponent(HistoryAddEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

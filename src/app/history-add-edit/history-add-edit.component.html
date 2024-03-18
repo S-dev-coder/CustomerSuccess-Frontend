@@ -1,0 +1,58 @@
+
+<div mat-dialog-title>
+    <h1>Project Budget Form</h1>
+</div>
+<form  [formGroup]="historyForm" (ngSubmit)="onFormSubmit()" >
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Project Id</mat-label>
+                <input matInput type="string" placeholder="Ex. Technical" formControlName="projectId">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Date Of Audit</mat-label>
+                <input matInput type="datetime-local" placeholder="Ex. Technical" formControlName="dateOfAudit">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Reviewed By </mat-label>
+                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="reviewedBy">
+            </mat-form-field>
+           
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Status </mat-label>
+                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="status">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label> Reviewed Section</mat-label>
+                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="reviewedSection">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Comments</mat-label>
+                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="comments">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Action Item </mat-label>
+                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="actionItem">
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+</form>

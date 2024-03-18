@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import { ProjectbudgetComponent } from './projectbudget/projectbudget.component';
 import { RiskprofileComponent } from './riskprofile/riskprofile.component';
+import { AudithistoryComponent } from './audithistory/audithistory.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'project-details/:id', component: ProjectDetailsComponent },
   { path: 'projectbudget', component: ProjectbudgetComponent },
-  { path: 'riskprofile', component: RiskprofileComponent }
+  { path: 'riskprofile', component: RiskprofileComponent },
+  { path: 'audithistory', component: AudithistoryComponent },
 
 
 

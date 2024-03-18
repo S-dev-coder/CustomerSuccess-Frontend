@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { RiskAddEditComponent } from '../risk-add-edit/risk-add-edit.component';
+
 import { MatDialog } from '@angular/material/dialog';
+import { RiskprofileAddEditComponent } from '../riskprofile-add-edit/riskprofile-add-edit.component';
+import { RiskProfileService } from '../services/risk-profile.service';
 
 @Component({
   selector: 'app-riskprofile',
@@ -9,14 +11,53 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrl: './riskprofile.component.css'
 })
 export class RiskprofileComponent {
-displayedColumns: any;
 
-  constructor(private router: Router,private _dialog: MatDialog) {
+  
+
+  constructor(private _dialog: MatDialog, public _riskprofileService: RiskProfileService,private router: Router) {
+    this.getProfileList();
+  }
+  displayedColumns: string[] = ['riskType', 'description', 'severity', 'impact','remediationSteps','status','closureDate',"action"];
+
+  profileListAll: any[] = [];
+  profileList: any[] = [];
+
+  ngOnInit() {
+    this.getProfileList();
   }
 
-  openAddEditForm(){
-    this._dialog.open(RiskAddEditComponent);
-    }
+
+
+  getProfileList() {
+    console.log(this._riskprofileService.myGlobalVariable);
+    this._riskprofileService.getAllProfileForProject(this._riskprofileService.myGlobalVariable).subscribe((res: any) => {
+      console.log(res);
+      this. profileListAll = res; 
+      console.log(res.items);// Assuming 'items' is the array of MoM items in the response
+      this. profileList = this.profileListAll;
+      console.log(this.profileList);
+      console.log(this.profileListAll);
+       // Assuming you want to assign all items by default
+    });
+  }
+
+  openAddEditForm() {
+    this._dialog.open(RiskprofileAddEditComponent);
+  }
+
+  openEditForm(data: any) {
+    this._dialog.open(RiskprofileAddEditComponent, {
+      data,
+    });
+    this.getProfileList();
+  }
+
+  deleteProfile(id: string) {
+    this._riskprofileService.deleteProfile(id).subscribe((res: any) => {
+      console.log(res);
+      this.getProfileList();
+    });
+  }
   
   navigateToteam() {
     this.router.navigate(['/approved-team']);

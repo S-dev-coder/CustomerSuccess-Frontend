@@ -99,4 +99,7 @@ export class MomComponent {
   navigateTorisk() {
     this.router.navigate(['/riskprofile']);
   }
+  navigateToAudit(){
+    this.router.navigate(['/audithistory']);
+  }
 }

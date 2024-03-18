@@ -40,13 +40,18 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
 import { ProjectbudgetComponent } from './projectbudget/projectbudget.component';
 import { BudgetAddEditComponent } from './budget-add-edit/budget-add-edit.component';
 import { RiskprofileComponent } from './riskprofile/riskprofile.component';
-import { RiskAddEditComponent } from './risk-add-edit/risk-add-edit.component';
+
 import { FeedbackService } from './services/feedback.service';
 import { ProjectUpdateService } from './services/project-update.service';
 import { UpdateAddEditComponent } from './update-add-edit/update-add-edit.component';
 import { MoMService } from './services/mom.service';
 import { MomAddEditComponent } from './mom-add-edit/mom-add-edit.component';
 import { BudgetService } from './services/buget.service';
+import { RiskprofileAddEditComponent } from './riskprofile-add-edit/riskprofile-add-edit.component';
+import { RiskProfileService } from './services/risk-profile.service';
+import { AudithistoryComponent } from './audithistory/audithistory.component';
+import { AuditHistoryService } from './services/history.service';
+import { HistoryAddEditComponent } from './history-add-edit/history-add-edit.component';
 
 
 @NgModule({
@@ -68,9 +73,12 @@ import { BudgetService } from './services/buget.service';
     ProjectbudgetComponent,
     BudgetAddEditComponent,
     RiskprofileComponent,
-    RiskAddEditComponent,
+
     UpdateAddEditComponent,
     MomAddEditComponent,
+    RiskprofileAddEditComponent,
+    AudithistoryComponent,
+    HistoryAddEditComponent,
 
 
 
@@ -111,7 +119,8 @@ import { BudgetService } from './services/buget.service';
     ProjectUpdateService,
     MoMService,
     BudgetService,
-
+    RiskProfileService,
+    AuditHistoryService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,59 +1,60 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { BudgetAddEditComponent } from '../budget-add-edit/budget-add-edit.component';
-import { BudgetService } from '../services/buget.service';
+import { AuditHistoryService } from '../services/history.service';
+import { HistoryAddEditComponent } from '../history-add-edit/history-add-edit.component';
 
 @Component({
-  selector: 'app-projectbudget',
-  templateUrl: './projectbudget.component.html',
-  styleUrl: './projectbudget.component.css'
+  selector: 'app-audithistory',
+  templateUrl: './audithistory.component.html',
+  styleUrl: './audithistory.component.css'
 })
-export class ProjectbudgetComponent {
-  displayedColumns: string[] = ['type', 'durationInMonths', 'budgetedHours', "action"];
+export class AudithistoryComponent {
+
+  displayedColumns: string[] = ['dateOfAudit', 'reviewedBy', 'status', 'reviewedSection', 'comments', 'actionItem', "action"];
 
   // _feedbackService: any;
   // feedbackListAll: any;
-  budgetListAll: any[] = [];
-  budgetList: any[] = [];
+  historyListAll: any[] = [];
+  historyList: any[] = [];
   
 
-  constructor(private _dialog: MatDialog, public _budgetService: BudgetService,private router: Router) {
-    this.getBudgetList();
+  constructor(private _dialog: MatDialog,private router: Router,public _audithistoryService: AuditHistoryService) {
+    this.getHistoryList();
   }
  
 
   ngOnInit() {
-    this.getBudgetList();
+    this.getHistoryList();
   }
 
 
 
-  getBudgetList() {
-    console.log(this._budgetService.myGlobalVariable);
-    this._budgetService.getAllBudgetForProject(this._budgetService.myGlobalVariable).subscribe((res: any) => {
+  getHistoryList() {
+    console.log(this._audithistoryService.myGlobalVariable);
+    this._audithistoryService.getAllHistoryForProject(this._audithistoryService.myGlobalVariable).subscribe((res: any) => {
       console.log(res);
-      this.budgetListAll = res; 
+      this.historyListAll = res; 
       console.log(res.items);// Assuming 'items' is the array of MoM items in the response
-      this.budgetList = this.budgetListAll; // Assuming you want to assign all items by default
+      this.historyList = this.historyListAll; // Assuming you want to assign all items by default
     });
   }
 
   openAddEditForm() {
-    this._dialog.open(BudgetAddEditComponent);
+    this._dialog.open(HistoryAddEditComponent);
   }
 
   openEditForm(data: any) {
-    this._dialog.open(BudgetAddEditComponent, {
+    this._dialog.open(HistoryAddEditComponent, {
       data,
     });
-    this.getBudgetList();
+    this.getHistoryList();
   }
 
-  deleteBudget(id: string) {
-    this._budgetService.deleteBudget(id).subscribe((res: any) => {
+  deleteHistory(id: string) {
+    this._audithistoryService.deleteHistory(id).subscribe((res: any) => {
       console.log(res);
-      this.getBudgetList();
+      this.getHistoryList();
     });
   }
   navigateToteam() {

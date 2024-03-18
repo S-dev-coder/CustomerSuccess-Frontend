@@ -7,6 +7,8 @@ import { FeedbackService } from '../services/feedback.service';
 import { ProjectUpdateService } from '../services/project-update.service';
 import { MoMService } from '../services/mom.service';
 import { PDFDocument } from 'pdf-lib';
+import { RiskProfileService } from '../services/risk-profile.service';
+import { AuditHistoryService } from '../services/history.service';
 
 @Component({
   selector: 'app-project-details',
@@ -18,8 +20,12 @@ export class ProjectDetailsComponent {
   updateList: any[] = [];
   momList: any[] = [];
   budgetList:any[]=[];
+  profileList:any[]=[];
+  historyList:any[]=[];
   pdfBuffer: ArrayBuffer[] = [];
   constructor(private _momService: MoMService, public _budgetService: BudgetService,
+    public _riskprofileService: RiskProfileService,
+    public _audithistoryService: AuditHistoryService,
     private _projectupdateService: ProjectUpdateService, private router: Router, public _feedbackService: FeedbackService) {
   }
 
@@ -29,6 +35,10 @@ export class ProjectDetailsComponent {
       await this.generatePdfforProjectupdate();
       await this.generatePdfforMom();
       await this.generatePdfforBudget();
+      await this.generatePdfforRiskProfile();
+      await this.generatePdfforAuditHistory();
+
+
 
       const mergedPdfBytes = await this.mergePdfs(this.pdfBuffer);
       const mergedPdfBlob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
@@ -191,6 +201,71 @@ export class ProjectDetailsComponent {
     });
   }
 
+  generatePdfforRiskProfile(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this._riskprofileService.getProfileList().subscribe((res: any) => {
+        this.profileList= [];
+        for (let i = 0; i < res.items.length; i++) {
+          if (res.items[i].projectId == this._riskprofileService.myGlobalVariable) {
+            this.profileList.push(res.items[i]);
+          }
+        }
+
+        console.log("hi");
+        const doc = new jsPDF('p', 'mm', 'a4');
+        const profile = [['riskType', 'description', 'severity','remediationSteps','status','closureDate']]
+        const profilelistpdf = [];
+
+        for (let i = 0; i < this.profileList.length; i++) {
+          profilelistpdf.push([this.profileList[i].riskType,this.budgetList[i].description,this. budgetList[i].severity,this. budgetList[i].remediationSteps,this. budgetList[i].status,this. budgetList[i].closureDate])
+         }
+
+        (doc as any).autoTable({
+          head: profile,
+          body: profilelistpdf
+        });
+
+        this.pdfBuffer.push(doc.output('arraybuffer'));
+        resolve();
+      }, error => {
+        reject(error);
+      });
+    });
+  }
+
+  generatePdfforAuditHistory(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      this._audithistoryService.getHistoryList().subscribe((res: any) => {
+        this.historyList= [];
+        for (let i = 0; i < res.items.length; i++) {
+          if (res.items[i].projectId == this._audithistoryService.myGlobalVariable) {
+            this.historyList.push(res.items[i]);
+          }
+        }
+
+        console.log("hi");
+        const doc = new jsPDF('p', 'mm', 'a4');
+        const history = [['dateOfAudit', 'reviewedBy', 'status', 'reviewedSection', 'comments', 'actionItem']]
+        const historylistpdf = [];
+
+        for (let i = 0; i < this.historyList.length; i++) {
+          historylistpdf.push([this.historyList[i].dateOfAudit,this.historyList[i].reviewedBy,this. historyList[i].status,this. historyList[i].reviewedSection,this.historyList[i].comments,this. historyList[i].actionItem])
+         }
+
+        (doc as any).autoTable({
+          head: history,
+          body:historylistpdf
+        });
+
+        this.pdfBuffer.push(doc.output('arraybuffer'));
+        resolve();
+      }, error => {
+        reject(error);
+      });
+    });
+  }
+
+
   navigateToteam() {
     this.router.navigate(['/approved-team']);
   }
@@ -221,6 +296,9 @@ export class ProjectDetailsComponent {
   }
   navigateTorisk() {
     this.router.navigate(['/riskprofile']);
+  }
+  navigateToAudit() {
+    this.router.navigate(['/audithistory']);
   }
 }
 
