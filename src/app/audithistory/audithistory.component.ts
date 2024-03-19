@@ -57,26 +57,31 @@ export class AudithistoryComponent {
 }
 
 sendNotificationForAllStakeholder() {
-    return new Promise((resolve, reject) => {
-        this._stakeholderService.getAllStakeholderForProject(this._stakeholderService.myGlobalVariable)
-            .subscribe((res: any) => {
-                console.log(res);
-                const promises = [];
-                for (let i = 0; i < res.length; i++) {
-                    promises.push(this.sendNotification(res[i]));
-                }
-                Promise.all(promises)
-                    .then(results => {
-                        resolve(results);
-                    })
-                    .catch(error => {
-                        reject(error);
-                    });
-            }, error => {
-                reject(error);
-            });
-    });
+  return new Promise<void>((resolve, reject) => {
+      this._stakeholderService.getAllStakeholderForProject(this._stakeholderService.myGlobalVariable)
+          .subscribe((res: any) => {
+              console.log(res);
+              const promises: Promise<void>[] = [];
+              for (let i = 0; i < res.length; i++) {
+                promises.push(this.sendNotification(res[i]) as Promise<void>);
+              }
+              Promise.all(promises)
+                .then(() => {
+                  console.log('All notifications sent successfully');
+                  resolve();
+                })
+                .catch(error => {
+                  console.error('Failed to send notifications:', error);
+                  reject(error);
+                });
+          }, error => {
+              console.error('Failed to get stakeholders:', error);
+              reject(error);
+          });
+  });
 }
+
+
 
 
 

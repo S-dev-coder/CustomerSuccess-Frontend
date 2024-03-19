@@ -1,6 +1,6 @@
 // notification.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +13,13 @@ export class NotificationService {
     const notificationData = {
       email,
       subject: 'Audit Completion Notification',
-      message: `Hello ${stakeholderName},
-      Please note that audit has been completed and here is the audit summary:
-      ${auditHistory}
-      Location: ${linkToPlatform}
-      Thanks and Regards,
-      Promact Infotech Pvt Ltd`
+      message: 'your name'
     };
-    return this.http.post('/Notification', notificationData);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post('https://localhost:44347/Notification', notificationData, httpOptions);
   }
 }
