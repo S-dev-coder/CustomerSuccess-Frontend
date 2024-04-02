@@ -1,0 +1,70 @@
+/* General styles */
+.logout-button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 18px 26px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.user-image {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .user-image-icon {
+    height: 28px;
+    font-size: 16px;
+  }
+  
+/* Header styles */
+.header {
+    background-color: #2c3344;
+    padding: 32px 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.user{
+    color: white;
+   
+
+}
+
+.project-name {
+    display: flex;
+    align-items: center;
+}
+
+.project-title {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.search-box {
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.search-input {
+    background-color: #2c3344;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 12px;
+    width: 50%;
+    font-size: 14px;
+}
+
+.user-info {
+    margin-left: auto;
+}
+
+.username {
+    padding-left: 15px;
+    color: white;
+    font-size: 16px;
+}

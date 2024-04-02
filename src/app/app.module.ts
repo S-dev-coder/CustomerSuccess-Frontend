@@ -40,7 +40,8 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
 import { ProjectbudgetComponent } from './projectbudget/projectbudget.component';
 import { BudgetAddEditComponent } from './budget-add-edit/budget-add-edit.component';
 import { RiskprofileComponent } from './riskprofile/riskprofile.component';
-
+import { AuthModule } from '@auth0/auth0-angular';
+import { enviroment } from './enviroments/enviroment';
 import { FeedbackService } from './services/feedback.service';
 import { ProjectUpdateService } from './services/project-update.service';
 import { UpdateAddEditComponent } from './update-add-edit/update-add-edit.component';
@@ -58,7 +59,14 @@ import { StakeholderService } from './services/stakeholder.service';
 import { VersionhistoryComponent } from './versionhistory/versionhistory.component';
 import { VersionhistoryAddEditComponent } from './versionhistory-add-edit/versionhistory-add-edit.component';
 import { VersionHistoryService } from './services/versionhistory.service';
-
+import { LoginpageComponent } from './loginpage/loginpage.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
+import { LoginbuttonComponent } from './loginbutton/loginbutton.component';
+import { AppHeaderComponent } from './app-header/app-header.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -79,7 +87,7 @@ import { VersionHistoryService } from './services/versionhistory.service';
     ProjectbudgetComponent,
     BudgetAddEditComponent,
     RiskprofileComponent,
-
+    
     UpdateAddEditComponent,
     MomAddEditComponent,
     RiskprofileAddEditComponent,
@@ -89,6 +97,9 @@ import { VersionHistoryService } from './services/versionhistory.service';
     StakeholderAddEditComponent,
     VersionhistoryComponent,
     VersionhistoryAddEditComponent,
+    LoginpageComponent,
+    LoginbuttonComponent,
+    AppHeaderComponent,
 
 
 
@@ -98,6 +109,8 @@ import { VersionHistoryService } from './services/versionhistory.service';
     AppRoutingModule,
     MatSidenavModule,
     MatButtonModule,
+    MatMenuModule,
+    MatDividerModule,
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
@@ -118,6 +131,7 @@ import { VersionHistoryService } from './services/versionhistory.service';
     MatFormField,
     DatePipe,
     MatSnackBarModule,
+    AuthModule.forRoot(enviroment.auth),
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },

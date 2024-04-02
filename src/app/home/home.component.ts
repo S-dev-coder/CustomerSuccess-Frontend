@@ -22,6 +22,8 @@ import { AudithistoryComponent } from '../audithistory/audithistory.component';
 import { AuditHistoryService } from '../services/history.service';
 import { StakeholderService } from '../services/stakeholder.service';
 import { VersionHistoryService } from '../services/versionhistory.service';
+import { AuthService } from '@auth0/auth0-angular';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -51,6 +53,7 @@ export class HomeComponent {
         public _audithistoryService:AuditHistoryService,
         public _stakeholderService:StakeholderService,
         public _versionhistoryService:VersionHistoryService,
+        public auth: AuthService,
       ) {
     this.getProjectList();
 
@@ -106,11 +109,17 @@ export class HomeComponent {
     this.getProjectList();
   }
 
+  
+  sideBarOpen = true;
+
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
   navigateToteam() {
     this.router.navigate(['/approved-team']);
   }
   navigateToHome() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
   }
   navigateToresource() {
     this.router.navigate(['/resources']);

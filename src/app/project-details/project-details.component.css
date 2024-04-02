@@ -1,11 +1,11 @@
 .content-container {
   height: 100%;
-  border: 1px solid #080808;
+  /* border: 1px solid #080808; */
   min-height: 100vh;
 }
 
 .sidebar {
-  background-color: rgb(238, 210, 169);
+  background-color: #2c3344;
   height: 100%;
   width: 350px;
 }
@@ -19,8 +19,8 @@
 
 .main-content {
   width: 180vh;
-  padding: 30px;
-  background-color: blanchedalmond;
+  padding: 15px;
+  background-color: white;
   /* Example padding */
 }
 

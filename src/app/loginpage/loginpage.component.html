@@ -1,0 +1,132 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+</head>
+
+<body ng-app="FireCart" ng-controller="AuthController">
+    <main>
+        <!--Sign In card-->
+        <div class="row center">
+            <!--Branding logo-->
+            <div class="col s12 m10 offset-m1 l6 offset-l3">
+                <div class="card sticky-action z-depth-4 card-panel hoverable">
+                    <!--Login fields-->
+                    <form ng-submit="authenticateUser()">
+                        <div class="card-content">
+                            <div class="row center-align">
+                                <span class="card-title grey-text text-darken-4 center-align">Sign In</span>
+
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix center">account_circle</i>
+                                    <input ng-model="user.email" id="email" type='email' name='email'
+                                        class="validate left-align" required="true" placeholder="Email ID" />
+                                    <label for="email" class="left-align"></label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix center">dialpad</i>
+                                    <input ng-model="user.password" type='password' name='password' id='password'
+                                        class="validate" required="true" placeholder="Password" />
+                                    <label for="password" class=" left-align"></label>
+                                </div>
+                            </div>
+
+                            <input type="submit" class="waves-effect waves-light btn" value='Login'(click)=" navigateToHome()" id="submit">
+                        </div>
+                    </form>
+
+                    <!--More actions -->
+                    <div class="card-action">
+                        <div class="row">
+                            <div class="col s6 left-align valign-wrapper">
+                                <a href="#" class="activator btn-flat white orange-text "> <i
+                                        class="material-icons orange-text white-text">rocket</i>SignUp</a>
+                            </div>
+                            <div class="col s6 right">
+                                <a data-target="ResetPassDialog" class="btn-flat modal-trigger white orange-text"><i
+                                        class="material-icons orange-text white-text">vpn_key</i>Forgot Password</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Hidden Actions For SignUp-->
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Sign Up<i
+                                class="material-icons right">close</i></span>
+                        <div class="row center-align">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix center">account_circle</i>
+                                <input id="idsignup" type="text" class="validate left-align" required="required"
+                                    placeholder="User Mail ID" />
+                                <label for="idsignup" class="left-align">Username</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix center">dialpad</i>
+                                <input id="passsignup" type="password" class="validate" required="required"
+                                    placeholder="Password" />
+                                <label for="passsignup" class=" left-align">Password</label>
+                            </div>
+                            <input type="button" class="waves-effect waves-light btn" value="Signup" id="signup"
+                                onclick="signUp()" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Structure for Pass Reset -->
+    <div id="ResetPassDialog" class="modal bottom-sheet">
+        <div class="modal-content">
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Reset Password<i
+                        class="material-icons right modal-action modal-close">close</i></span>
+                <div class="row center-align">
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix center">account_circle</i>
+                        <input id="id_reset_pass" type="text" class="validate left-align" required="required"
+                            placeholder="User Mail ID" />
+                        <label for="id_reset_pass" class="left-align">Please enter your Email Address</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer center-align">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn orange"
+                style="margin-left:10px">CANCEL</a>
+            <input type="button" class="waves-effect waves-light btn green" value="Reset Password" id="resetPassword"
+                onclick="resetPassword()" />
+        </div>
+    </div>
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script>
+        $(document).keypress(function (e) {
+            if (e.which == 13) {
+                signIn();
+            }
+        });
+        $(document).ready(function () {
+            //Initialize Dialog
+            $('.modal').modal();
+        });
+
+        var app = angular.module("FireCart", []);
+        app.controller("AuthController", function ($scope) {
+            //Authentication
+            $scope.authenticateUser = function () {
+                console.log("Email" + $scope.user.email + " Pass" + $scope.user.password)
+                Materialize.toast("Email: " + $scope.user.email + " Pass: " + $scope.user.password, 4000)
+            }
+        });
+    </script>
+</body>
+
+</html>

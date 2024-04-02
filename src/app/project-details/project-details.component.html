@@ -1,73 +1,74 @@
 <mat-drawer-container class="content-container">
-    <mat-drawer mode="side" class="sidebar" opened="true">
-      <div class="drawer-content">
-       
-        <button mat-raised-button color="primary" class="btn" (click)="navigateToHome()">
+  <mat-drawer mode="side" class="sidebar" opened="true">
+    <div class="drawer-content" >
 
-            <mat-icon>add</mat-icon> New Project
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateToHome()">
+
+        <mat-icon>add</mat-icon> New Project
+
+      </button>
+
     
-          </button> 
-          
-         
-            <!-- <div>
-                <button mat-raised-button color="primary"  (click)="generatePDF()">Download Project Details</button>
-            </div> -->
-            <!-- <button mat-raised-button color="secondary" class="btn" (click)="generatePDF()">
-              <mat-icon>download</mat-icon> Download Project Details
-            </button> -->
-         
-        <!-- Buttons added below drawer content text -->
-        <button mat-raised-button color="secondary" class="btn" (click)="navigateToteam()">
-          <mat-icon>group</mat-icon> Approved Team
-        </button>
-  
-        <button mat-raised-button color="secondary" class="btn" (click)="navigateToresource()">
-          <mat-icon>folder</mat-icon> Resources
-        </button>
-  
-        <button mat-raised-button color="secondary" class="btn" (click)=" navigateToclientfeedback()">
-          <mat-icon>feedback</mat-icon> Client Feedback
-        </button>
-  
-        <button mat-raised-button color="secondary" class="btn" (click)="navigateToprojectUpdate()">
-          <mat-icon>update</mat-icon> Project Updates
-        </button>
-  
-        <button mat-raised-button color="secondary" class="btn" (click)="navigateToMoM()">
-          <mat-icon>event_note</mat-icon> MoM
-        </button>
-        <button mat-raised-button color="secondary" class="btn" (click)="navigateTobudget()">
-            <mat-icon>work</mat-icon> Project Budget
-          </button>
-          <button mat-raised-button color="secondary" class="btn" (click)="navigateTorisk()">
-            <mat-icon>notification</mat-icon> Risk Profiling
-          </button>
-         
-          <button mat-raised-button color="secondary" class="btn" (click)="navigateToversion()">
-            <mat-icon>info</mat-icon> Version History
-        </button>
-          <button mat-raised-button color="secondary" class="btn" (click)="navigateToAudit()">
-            <mat-icon>info</mat-icon> Audit History
-          </button>
-          <button mat-raised-button color="secondary" class="btn" (click)="navigateToStakeholder()">
-            <mat-icon>verified_user</mat-icon> Stake Holders
-          </button>
-        <!-- End of buttons -->
-      </div>
-    </mat-drawer>
-  
-    <mat-drawer-content class="main-content">
-        <div class="container">
-            <div class="header">
-              <h2>Hello Admin !!</h2>
-            </div>
-            <div>
-                <button mat-raised-button color="primary"  (click)="generatePDF()">Download Project Details</button>
-            </div>
-            
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateToteam()">
+        <mat-icon>group</mat-icon> Approved Team
+      </button>
+
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateToresource()">
+        <mat-icon>folder</mat-icon> Resources
+      </button>
+
+      <button mat-raised-button color="secondary" class="btn" (click)=" navigateToclientfeedback()">
+        <mat-icon>feedback</mat-icon> Client Feedback
+      </button>
+
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateToprojectUpdate()">
+        <mat-icon>update</mat-icon> Project Updates
+      </button>
+
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateToMoM()">
+        <mat-icon>event_note</mat-icon> MoM
+      </button>
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateTobudget()">
+        <mat-icon>work</mat-icon> Project Budget
+      </button>
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateTorisk()">
+        <mat-icon>notification</mat-icon> Risk Profiling
+      </button>
+
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateToversion()">
+        <mat-icon>info</mat-icon> Version History
+      </button>
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateToAudit()">
+        <mat-icon>info</mat-icon> Audit History
+      </button>
+      <button mat-raised-button color="secondary" class="btn" (click)="navigateToStakeholder()">
+        <mat-icon>verified_user</mat-icon> Stake Holders
+      </button>
+      <!-- End of buttons -->
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content class="main-content">
+    <div><app-header></app-header></div>
+    <div class="container">
+      <div class="header">
+        <div>
+          <div>
+            <h2>Hello Admin !!</h2>
+
+
           </div>
-          
-  
-    </mat-drawer-content>
-  
-  </mat-drawer-container>
+          <div>
+            <button mat-raised-button color="primary" (click)="generatePDF()">Download Project Details</button>
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+  </mat-drawer-content>
+
+</mat-drawer-container>

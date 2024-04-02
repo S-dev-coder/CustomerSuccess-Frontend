@@ -22,6 +22,7 @@ export class AddEditComponent implements OnInit {
 
   ) {
     this.projectForm = this._fb.group({
+      
       name: '',
       description: '',
     });
@@ -57,6 +58,7 @@ export class AddEditComponent implements OnInit {
             console.error('Error occurred during project creation:', err); // Log error
             // You can add further error handling here, such as displaying an error message to the user
           }
+          
         });
         
       }else{

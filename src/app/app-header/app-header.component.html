@@ -1,0 +1,32 @@
+<header class="header">
+    <!-- Left side: Project name -->
+    <div class="project-name">
+
+    </div>
+
+    <!-- Center: Search box -->
+    <div class="search-box">
+        <input class="search-input" type="text" placeholder="Search..." />
+    </div>
+
+    <!-- Right side: User -->
+    <div class="user-info">
+        <!-- <button (click)="auth.logout()" class="logout-button">Log out</button>
+    <span class="username">Admin</span> -->
+        <li>
+            <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
+                <img src="./assets/user.jpg" alt="" class="user-image mr-1 p-2" />
+
+                Admin
+                <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="auth.logout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    Logout
+                </button>
+            </mat-menu>
+        </li>
+
+    </div>
+</header>

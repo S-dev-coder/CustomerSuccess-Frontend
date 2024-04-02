@@ -14,10 +14,13 @@ import { RiskprofileComponent } from './riskprofile/riskprofile.component';
 import { AudithistoryComponent } from './audithistory/audithistory.component';
 import { StakeholderComponent } from './stakeholder/stakeholder.component';
 import { VersionhistoryComponent } from './versionhistory/versionhistory.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
+import { LoginbuttonComponent } from './loginbutton/loginbutton.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '', component: LoginbuttonComponent },
   { path: 'approved-team', component: ApprovedTeamComponent },
   { path: 'resources', component: ResourcesComponent },
   { path: 'clientfeedback', component: ClientfeedbackComponent },
@@ -31,6 +34,7 @@ const routes: Routes = [
   { path: 'audithistory', component: AudithistoryComponent },
   { path: 'stakeholder', component: StakeholderComponent },
   { path: 'versionhistory', component: VersionhistoryComponent },
+  { path: 'loginpage', component: LoginpageComponent },
 
 
 

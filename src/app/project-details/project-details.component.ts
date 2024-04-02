@@ -11,7 +11,7 @@ import { RiskProfileService } from '../services/risk-profile.service';
 import { AuditHistoryService } from '../services/history.service';
 import { StakeholderService } from '../services/stakeholder.service';
 import { VersionHistoryService } from '../services/versionhistory.service';
-
+import { AuthService } from '@auth0/auth0-angular';
 @Component({
   selector: 'app-project-details',
   templateUrl: './project-details.component.html',
@@ -32,7 +32,9 @@ export class ProjectDetailsComponent {
     public _audithistoryService: AuditHistoryService,
     public _stakeholderService: StakeholderService,
     public _versionhistoryService: VersionHistoryService,
-    private _projectupdateService: ProjectUpdateService, private router: Router, public _feedbackService: FeedbackService) {
+    private _projectupdateService: ProjectUpdateService,
+    public auth: AuthService,
+     private router: Router, public _feedbackService: FeedbackService) {
   }
 
   async generatePDF() {

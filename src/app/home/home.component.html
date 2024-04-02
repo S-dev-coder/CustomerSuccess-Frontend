@@ -1,5 +1,10 @@
 <mat-drawer-container class="example-container">
   <mat-drawer class="drawer" mode="side" opened="true">
+    <div class="logo py-4">
+      <h1><i>Customer Success</i></h1>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- <h2 matSubheader class="mt-2">APPLICATIONS</h2> -->
     <div class="drawer-content">
       <!-- Buttons added below drawer content text -->
       <button mat-raised-button color="primary" class="btn" (click)="navigateToHome()">
@@ -17,6 +22,7 @@
         <mat-icon>work</mat-icon> Home
 
       </button>
+
       <!-- <button mat-raised-button color="secondary" class="btn" (click)="navigateToteam()">
         <mat-icon>group</mat-icon> Approved Team
       </button> -->
@@ -41,13 +47,18 @@
     <!-- <app-sidenav></app-sidenav> -->
   </mat-drawer>
   <mat-drawer-content class="main">
-    <div class="top" >
-      <mat-toolbar color="primary">
+    <div>
+      <app-header></app-header>
+    </div>
+    <div class="top">
+      <mat-toolbar color="primary" class="top-div">
         <span>All Projects</span>
         <span class="example-spacer"></span>
         <button mat-raised-button (click)="openAddEditForm()">
           ADD PROJECT
         </button>
+
+
       </mat-toolbar>
     </div>
     <div class="bottom">
@@ -86,7 +97,8 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let project; columns: displayedColumns;"  (click)="openProjectDetails(project.id)"  class="hover-effect"></tr>
+        <tr mat-row *matRowDef="let project; columns: displayedColumns;" (click)="openProjectDetails(project.id)"
+          class="hover-effect"></tr>
       </table>
     </div>
   </mat-drawer-content>
