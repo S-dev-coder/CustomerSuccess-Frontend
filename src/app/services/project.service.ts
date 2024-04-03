@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class ProjectService {
-
+    projectListAll: any;
     constructor(private http: HttpService) { }
 
     getProjectList() {

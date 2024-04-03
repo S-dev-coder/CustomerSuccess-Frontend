@@ -41,6 +41,7 @@ export class HomeComponent {
 
 
   constructor(public feedbackService: FeedbackService, 
+   
     private _formBuilder: FormBuilder,
      private router: Router,
       private _projectService: ProjectService, 
@@ -56,9 +57,10 @@ export class HomeComponent {
         public auth: AuthService,
       ) {
     this.getProjectList();
+    console.log(this.getProjectList);
 
   }
-  displayedColumns: string[] = ['id', 'name', 'description', 'manager', "action"];
+  displayedColumns: string[] = [ 'name', 'description', 'manager', "action"];
 
   getProjectList() {
     this._projectService.getProjectList().subscribe((res: any) => {
@@ -93,13 +95,12 @@ export class HomeComponent {
 
   openAddEditForm() {
     const dialogRef = this._dialog.open(AddEditComponent);
-    dialogRef.afterClosed().subscribe({
-      next: (val) => {
-        if (val) {
-          this.getProjectList();
-        }
-      },
+
+    dialogRef.componentInstance.projectUpdated.subscribe(() => {
+      this.getProjectList(); // Update project list after edit or add
     });
+
+    dialogRef.afterClosed().subscribe(/* other handling if needed */);
   }
 
   openEditForm(data: any) {

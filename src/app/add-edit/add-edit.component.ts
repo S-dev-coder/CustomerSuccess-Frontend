@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProjectService } from '../services/project.service';
 import { CoreService } from '../core/core.service';
-
+import { ChangeDetectorRef } from '@angular/core';
+import { EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-add-edit',
   templateUrl: './add-edit.component.html',
@@ -12,9 +13,10 @@ import { CoreService } from '../core/core.service';
 })
 
 export class AddEditComponent implements OnInit {
-
+  @Output() projectUpdated: EventEmitter<void> = new EventEmitter<void>();
   constructor(
     private _fb: FormBuilder,
+    private cdr: ChangeDetectorRef,
     private _projectService: ProjectService,
     private _dialogRef: MatDialogRef<AddEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -25,6 +27,7 @@ export class AddEditComponent implements OnInit {
       
       name: '',
       description: '',
+      manager:''
     });
   }
 
@@ -32,10 +35,7 @@ export class AddEditComponent implements OnInit {
 
   manager: string[] = [
     'Dipa Majumdar',
-    'Dipa Majumdar',
-    'Dipa Majumdar',
-    'Dipa Majumdar',
-    'Dipa Majumdar'
+    'Firoza Parveen',
   ];
 
   ngOnInit(): void {
@@ -43,41 +43,23 @@ export class AddEditComponent implements OnInit {
 
     this.projectForm.patchValue(this.data);
   }
-  onFormSubmit() {
+  async onFormSubmit() {
     if (this.projectForm.valid) {
-      if(this.data){
-        console.log(this.projectForm.value);
-        this._projectService.updateProject(this.data.id,this.projectForm.value).subscribe({
-  
-          next: (val: any) => {
-           
-            this._coreService.openSnackBar('Project Updated!', 'done');
-            this._dialogRef.close(true);
-          },
-          error: (err: any) => {
-            console.error('Error occurred during project creation:', err); // Log error
-            // You can add further error handling here, such as displaying an error message to the user
-          }
-          
-        });
-        
-      }else{
-        console.log(this.projectForm.value);
-        this._projectService.createProject(this.projectForm.value).subscribe({
-  
-          next: (val: any) => {
-            this._coreService.openSnackBar('Project added!', 'done');
-            this._dialogRef.close(true);
-          },
-          error: (err: any) => {
-            console.error('Error occurred during project creation:', err); // Log error
-            // You can add further error handling here, such as displaying an error message to the user
-          }
-        });
+      try {
+        // Assuming your form data contains project details
+        if (this.data) {
+          await this._projectService.updateProject(this.data.id, this.projectForm.value).toPromise();
+          this._coreService.openSnackBar('Project Updated!', 'done');
+        } else {
+          await this._projectService.createProject(this.projectForm.value).toPromise();
+          this._coreService.openSnackBar('Project added!', 'done');
+        }
+        this.projectUpdated.emit(); // Emit event after project is updated or added
+        this._dialogRef.close(true);
+      } catch (err) {
+        console.error('Error occurred during project creation:', err);
+        // Handle error
       }
-     
     }
-    
   }
-
 }
