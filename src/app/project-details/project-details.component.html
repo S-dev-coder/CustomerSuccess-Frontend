@@ -32,7 +32,7 @@
         <mat-icon>work</mat-icon> Project Budget
       </button>
       <button mat-raised-button color="secondary" class="btn" (click)="navigateTorisk()">
-        <mat-icon>notification</mat-icon> Risk Profiling
+        <mat-icon>feedback</mat-icon> Risk Profiling
       </button>
 
       <button mat-raised-button color="secondary" class="btn" (click)="navigateToversion()">
@@ -52,22 +52,34 @@
     <div><app-header></app-header></div>
     <div class="container">
       <div class="header">
-        <div>
-          <div>
-            <h2>Hello Admin !!</h2>
-
-
-          </div>
-          <div>
-            <button mat-raised-button color="primary" (click)="generatePDF()">Download Project Details</button>
-          </div>
-
-
-
-
+        <div class="greeting">
+          <h2>Welcome, Administrator!</h2>
+          <p>Export project details and manage CRUD operations seamlessly.</p>
+        </div>
+        <div class="button-container">
+          <button mat-raised-button color="primary" (click)="generatePDF()">Export Project Details</button>
         </div>
       </div>
+      <div class="features">
+        <h3>Implemented Functionality:</h3>
+        <ul>
+          <li><strong>Description:</strong> Export project details in a predefined format.</li>
+         <div> 
+
+         </div>
+          <li><strong>Responsibilities:</strong></li>
+          <ul>
+            <li>Developing a feature for seamless export of project details.</li>
+            <li>Implementing First 10 CRUD operations for insights into data operations.</li>
+            <li>Collaborating with the team for integration of export functionality with CRUD operations.</li>
+            <li>Testing export feature with CRUD operations for compatibility and accuracy.</li>
+            <li>(Optional) Assisting in Email Update Notification System implementation.</li>
+          </ul>
+        </ul>
+      </div>
     </div>
+    
+    
 
   </mat-drawer-content>
 

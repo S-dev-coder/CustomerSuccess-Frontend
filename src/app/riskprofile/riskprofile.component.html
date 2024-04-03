@@ -33,7 +33,7 @@
           <mat-icon>work</mat-icon> Project Budget
         </button>
         <button mat-raised-button color="secondary" class="btn" (click)="navigateTorisk()">
-          <mat-icon>notification</mat-icon> Risk Profiling
+          <mat-icon>feedback</mat-icon> Risk Profiling
         </button>
         <button mat-raised-button color="secondary" class="btn" (click)="navigateToMoM()">
           <mat-icon>mail</mat-icon> Sprintwise Details
@@ -53,7 +53,10 @@
   
     <mat-drawer-content class="main-content">
       <div class="top">
-        <mat-toolbar color="primary">
+        <div>
+          <app-header></app-header>
+        </div>
+        <mat-toolbar color="primary" class="top-div">
           <span>Risk Profile</span>
           <span class="example-spacer"></span>
           <button mat-raised-button (click)="openAddEditForm()">
