@@ -379,6 +379,9 @@ export class ProjectDetailsComponent {
   navigateToversion(){
     this.router.navigate(['/versionhistory']);
   }
+  navigateToMatrix(){
+    this.router.navigate(['/escalationmatrix']);
+  }
 }
 
 

@@ -40,7 +40,10 @@
 .mat-mdc-form-field {
   margin-top: 16px;
 }
-
+.header-row{
+  background-color: #3f4960;
+  color:white;
+}
 table {
   width: 100%;
 }

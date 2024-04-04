@@ -41,7 +41,9 @@
         <div class="row">
             <mat-form-field appearance="outline">
                 <mat-label>Closure Date  </mat-label>
-                <input matInput type="number" placeholder="Ex. test@gmail.com" formControlName="closureDate">
+                <input matInput [matDatepicker]="approvalDatePicker" placeholder="Ex. test@gmail.com" formControlName="closureDate">
+                <mat-datepicker-toggle matSuffix [for]="approvalDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #approvalDatePicker></mat-datepicker>
             </mat-form-field>
         </div>
        

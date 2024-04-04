@@ -22,6 +22,8 @@ import { DatePipe } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
+
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { ApprovedTeamComponent } from './approved-team/approved-team.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
@@ -67,7 +69,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { LoginbuttonComponent } from './loginbutton/loginbutton.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { EscalationMatrixComponent } from './escalation-matrix/escalation-matrix.component';
+import { MatrixAddEditComponent } from './matrix-add-edit/matrix-add-edit.component';
+import { EscalationMatrixService } from './services/escalation-matrix.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,6 +104,8 @@ import { MatMenuModule } from '@angular/material/menu';
     LoginpageComponent,
     LoginbuttonComponent,
     AppHeaderComponent,
+    EscalationMatrixComponent,
+    MatrixAddEditComponent,
 
 
 
@@ -110,6 +116,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatSidenavModule,
     MatButtonModule,
     MatMenuModule,
+    MatNativeDateModule,
     MatDividerModule,
     MatIconModule,
     FormsModule,
@@ -147,6 +154,7 @@ import { MatMenuModule } from '@angular/material/menu';
     AuditHistoryService,
     StakeholderService,
     VersionHistoryService,
+    EscalationMatrixService,
   ],
   bootstrap: [AppComponent]
 })

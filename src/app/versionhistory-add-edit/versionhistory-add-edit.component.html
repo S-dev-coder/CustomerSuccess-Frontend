@@ -46,14 +46,18 @@
         </div>
         <div class="row">
             <mat-form-field appearance="outline">
-                <mat-label>Revision Date </mat-label>
-                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="revisionDate">
+                <mat-label>Revision Date</mat-label>
+                <input matInput [matDatepicker]="revisionDatePicker" placeholder="Ex. test@gmail.com" formControlName="revisionDate">
+                <mat-datepicker-toggle matSuffix [for]="revisionDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #revisionDatePicker></mat-datepicker>
             </mat-form-field>
         </div>
         <div class="row">
             <mat-form-field appearance="outline">
-                <mat-label>Approval Date </mat-label>
-                <input matInput type="string" placeholder="Ex. test@gmail.com" formControlName="approvalDate">
+                <mat-label>Approval Date</mat-label>
+                <input matInput [matDatepicker]="approvalDatePicker" placeholder="Ex. test@gmail.com" formControlName="approvalDate">
+                <mat-datepicker-toggle matSuffix [for]="approvalDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #approvalDatePicker></mat-datepicker>
             </mat-form-field>
         </div>
         <div class="row">

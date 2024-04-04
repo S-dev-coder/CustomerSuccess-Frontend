@@ -26,7 +26,10 @@
 .top {
   padding-bottom: 30px;
 }
-
+.header-row{
+  background-color: #3f4960;
+  color:white;
+}
 .btn{
   margin: 40px;
   padding: 25px;

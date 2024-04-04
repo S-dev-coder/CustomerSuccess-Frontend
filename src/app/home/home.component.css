@@ -58,7 +58,10 @@
   background-color: #18222e;
   /* Darker background color on hover */
 }
-
+.header-row{
+  background-color: #3f4960;
+  color:white;
+}
 
 .example-spacer {
   flex: 1 1 auto;

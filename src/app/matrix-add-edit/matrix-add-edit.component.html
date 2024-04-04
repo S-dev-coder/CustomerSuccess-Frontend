@@ -1,0 +1,39 @@
+<div mat-dialog-title>
+    <h1>Escalation Matrix Form</h1>
+</div>
+<form  [formGroup]="matrixForm" (ngSubmit)="onFormSubmit()" >
+    <div mat-dialog-content class="content">
+        
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Level</mat-label>
+                <mat-select formControlName="level">
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Escalation Type</mat-label>
+               
+                <mat-select formControlName="escalationType">
+                </mat-select>
+                </mat-form-field>
+           
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Responsible Person</mat-label>
+                <mat-select formControlName="personName">
+                   
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+</form>

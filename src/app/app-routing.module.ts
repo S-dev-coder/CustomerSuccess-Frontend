@@ -16,6 +16,7 @@ import { StakeholderComponent } from './stakeholder/stakeholder.component';
 import { VersionhistoryComponent } from './versionhistory/versionhistory.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { LoginbuttonComponent } from './loginbutton/loginbutton.component';
+import { EscalationMatrixComponent } from './escalation-matrix/escalation-matrix.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'stakeholder', component: StakeholderComponent },
   { path: 'versionhistory', component: VersionhistoryComponent },
   { path: 'loginpage', component: LoginpageComponent },
+  { path: 'escalationmatrix', component: EscalationMatrixComponent },
 
 
 
